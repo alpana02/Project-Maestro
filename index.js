@@ -8,7 +8,7 @@ app.use(express.urlencoded())
 app.use(cors())
 
 
-mongoose.connect("mongodb://localhost:27017/maestro-app", {
+mongoose.connect("mongodb+srv://paoli2121:paoli2121@cluster0.ckidv.mongodb.net/users?retryWrites=true&w=majority", {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }, () => {
@@ -20,7 +20,6 @@ const userSchema = new mongoose.Schema({
     email: String,
     password: String
 })
-// Model 
 
 const User = new mongoose.model("User", userSchema)
 
@@ -38,7 +37,7 @@ app.post("/login", (req, res) => {
             }
         }
         else {
-            res.send("User not found")
+            res.send({ message: "User not found" })
         }
     })
 })

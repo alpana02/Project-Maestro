@@ -14,8 +14,8 @@ function App() {
     <BrowserRouter>
       <div className="App" style={{ backgroundImage: `url(${background})` }}>
         <Routes>
-          <Route exact path="/" element={user._id ? <Home /> : <Login />} />
-          <Route path="/login" element={<Login />} />
+          <Route exact path="/" element={user && user._id ? <Home /> : <Login setLoginUser={setLoginUser} />} />
+          <Route path="/login" element={<Login setLoginUser={setLoginUser} />} />
           <Route path="/register" element={<Register />} />
         </Routes>
 
