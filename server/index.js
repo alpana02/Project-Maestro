@@ -1,74 +1,24 @@
-import express from "express"
-import cors from "cors"
-import mongoose from "mongoose"
+const connectToMongo = require("./db");
+const express = require("express");
+const cors = require("cors");
+const app = express();
+const port = 5000;
 
-const app = express()
-app.use(express.json())
-app.use(express.urlencoded())
+connectToMongo();
+
+// For parsing application/json
+app.use(express.json());
+
+//for calling direct from browser
 app.use(cors())
 
+// For parsing application/x-www-form-urlencoded
+app.use(express.urlencoded({ extended: true }));
 
-mongoose.connect("mongodb://localhost:27017/maestro-app", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-}, () => {
-    console.log("DB Connected")
-})
-// User schema
-const userSchema = new mongoose.Schema({
-    name: String,
-    email: String,
-    password: String
-})
-// Model 
+//Available routes
+app.use("/api/auth", require("./routes/auth"));
+app.use("/api/notes", require("./routes/notes"));
 
-const User = new mongoose.model("User", userSchema)
-
-// Routes
-
-app.post("/login", (req, res) => {
-    const { email, password } = req.body
-    User.findOne({ email: email }, (err, user) => {
-        if (user) {
-            if (password === user.password) {
-                res.send({ message: "Login success", user: user })
-            }
-            else {
-                res.send({ message: "Password didn't match" })
-            }
-        }
-        else {
-            res.send("User not found")
-        }
-    })
-})
-
-app.post("/register", (req, res) => {
-    const { name, email, password } = req.body
-    User.findOne({ email: email }, (err, user) => {
-        if (user) {
-            res.send({ message: "User already exist" })
-        }
-        else {
-            console.log("Testing1")
-            const user = new User({
-                name: name,
-                email: email,
-                password: password
-            })
-            user.save(err => {
-                if (err) {
-                    res.send(err)
-                }
-                else {
-                    res.send({ message: "Successfully Registered" })
-                }
-            })
-        }
-    })
-
-})
-app.listen(9002, () => {
-    console.log("listening on port http://localhost:9002")
-})
-
+app.listen(port, () => {
+  console.log(`Example app listening at http://localhost:${port}`);
+});
