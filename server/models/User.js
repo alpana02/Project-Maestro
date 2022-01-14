@@ -9,15 +9,30 @@ const UserSchema = new Schema({
   email: {
     type: String,
     required: true,
-    unique: true,
   },
   password: {
     type: String,
     required: true,
   },
-  date: {
-    type: Date,
-    default: Date.now,
+  phone: {
+    type: String,
+    required: true,
+  },
+  role: {
+    type: String,
+    required: true,
+  },
+  interest: {
+    type: String,
+  },
+  work: {
+    type: String,
+  },
+  company: {
+    type: String,
+  },
+  experience: {
+    type: String,
   },
 });
 const User = new mongoose.model("user", UserSchema);

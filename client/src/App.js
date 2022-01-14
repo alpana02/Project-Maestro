@@ -7,11 +7,13 @@ import About from "./components/About";
 import Chat from "./components/Chat";
 import Discussion from "./components/Discussion";
 import NoteState from "./context/notes/NoteState";
-import  Alert from "./components/Alert";
+import Alert from "./components/Alert";
 import StudentNotes from "./components/StudentNotes";
 import { Login } from "./components/Login";
 import { Signup } from "./components/Signup";
 import { useState } from "react";
+import SignupHome from "./components/SignupHome";
+import { SignupMentee } from "./components/SignupMentee";
 
 function App() {
   const [alert, setAlert] = useState(null);
@@ -37,7 +39,9 @@ function App() {
             <Route exact path="/discussion" element={<Discussion />} />
             <Route exact path="/student_notes" element={<StudentNotes  showAlert={showAlert} />} />
             <Route exact path="/login" element={<Login  showAlert={showAlert} />} />
+            <Route exact path="/signuphome" element={<SignupHome  showAlert={showAlert} />} />
             <Route exact path="/signup" element={<Signup  showAlert={showAlert} />} />
+            <Route exact path="/signupmentee" element={<SignupMentee  showAlert={showAlert} />} />
           </Routes>
         </div>
       </Router>

@@ -1,20 +1,20 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-export const Signup = (props) => {
+export const SignupMentee = (props) => {
   let navigate = useNavigate();
   const [credentials, setcredentials] = useState({
-    name: "",
-    email: "",
-    password: "",
-    cpassword: "",
-    phone: "",
-    role: "mentor",
-    interest: "",
-    work: "",
-    company: "",
-    experience: "",
-  });
+    name: "",        
+    email: "",        
+    password: "",        
+    cpassword: "",        
+    phone: "",        
+    role: "mentee",        
+    interest: "",        
+    work: "",        
+    company: "",        
+    experience: "",        
+  });        
 
   const onChange = (e) => {
     setcredentials({ ...credentials, [e.target.name]: e.target.value });
@@ -34,9 +34,6 @@ export const Signup = (props) => {
         phone: credentials.phone,
         role: credentials.role,
         interest: credentials.interest,
-        work: credentials.work,  
-        company: credentials.company,
-        experience: credentials.experience,
       }),
     });
     const json = await response.json();
@@ -139,46 +136,6 @@ export const Signup = (props) => {
             onChange={onChange}
           />
         </div>
-        <div className="mb-3">
-          <label htmlFor="work" className="form-label">
-            Work
-          </label>
-          <input
-            type="text"
-            className="form-control"
-            name="work"
-            id="work"
-            value={credentials.work}
-            onChange={onChange}
-          />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="company" className="form-label">
-            Company
-          </label>
-          <input
-            type="text"
-            className="form-control"
-            name="company"
-            id="company"
-            value={credentials.company}
-            onChange={onChange}
-          />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="experience" className="form-label">
-            Years of Experience
-          </label>
-          <input
-            type="number"
-            className="form-control"
-            name="experience"
-            id="experience"
-            value={credentials.experience}
-            onChange={onChange}
-          />
-        </div>
-
         <button type="submit" className="btn btn-primary">
           Submit
         </button>

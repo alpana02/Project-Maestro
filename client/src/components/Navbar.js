@@ -7,7 +7,7 @@ export default function Navbar(props) {
   const handleLogout = () => {
     localStorage.removeItem("token");
     navigate("/login");
-    props.showAlert("Logged Out!!","primary")
+    props.showAlert("Logged Out!!", "primary")
   };
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -27,71 +27,68 @@ export default function Navbar(props) {
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            <li className="nav-item">
-              <Link
-                className={`nav-link ${
-                  location.pathname === "/" ? "active" : ""
-                }`}
-                aria-current="page"
-                to="/"
-              >
-                Home
-              </Link>
-            </li><li className="nav-item">
-              <Link
-                className={`nav-link ${
-                  location.pathname === "/chat" ? "active" : ""
-                }`}
-                to="/chat"
-              >
-                Chat
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link
-                className={`nav-link ${
-                  location.pathname === "/discussion" ? "active" : ""
-                }`}
-                to="/discussion"
-              >
-                Discussion Forum
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link
-                className={`nav-link ${
-                  location.pathname === "/student_notes" ? "active" : ""
-                }`}
-                to="/student_notes"
-              >
-                Notes
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link
-                className={`nav-link ${
-                  location.pathname === "/about" ? "active" : ""
-                }`}
-                to="/about"
-              >
-                About
-              </Link>
-            </li>
-          </ul>
           {!localStorage.getItem("token") ? (
             <form className="d-flex">
               <Link className="btn btn-primary mx-1" to="/login" role="button">
                 Login
               </Link>
-              <Link className="btn btn-primary mx-1" to="/signup" role="button">
+              <Link className="btn btn-primary mx-1" to="/signuphome" role="button">
                 Signup
               </Link>
             </form>
           ) : (
-            <button className="btn btn-primary mx-1" onClick={handleLogout}>
-              logout
-            </button>
+            <div class="d-flex justify-content-between">
+              <ul className="navbar-nav me-auto mb-2 mb-lg-0 p-2">
+                <li className="nav-item">
+                  <Link
+                    className={`nav-link ${location.pathname === "/" ? "active" : ""
+                      }`}
+                    aria-current="page"
+                    to="/"
+                  >
+                    Home
+                  </Link>
+                </li><li className="nav-item">
+                  <Link
+                    className={`nav-link ${location.pathname === "/chat" ? "active" : ""
+                      }`}
+                    to="/chat"
+                  >
+                    Chat
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link
+                    className={`nav-link ${location.pathname === "/discussion" ? "active" : ""
+                      }`}
+                    to="/discussion"
+                  >
+                    Discussion Forum
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link
+                    className={`nav-link ${location.pathname === "/student_notes" ? "active" : ""
+                      }`}
+                    to="/student_notes"
+                  >
+                    Notes
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link
+                    className={`nav-link ${location.pathname === "/about" ? "active" : ""
+                      }`}
+                    to="/about"
+                  >
+                    About
+                  </Link>
+                </li>
+              </ul>
+              <button className="btn btn-primary mx-1" onClick={handleLogout}>
+                logout
+              </button>
+            </div>
           )}
         </div>
       </div>

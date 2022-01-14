@@ -18,6 +18,11 @@ router.post(
   body("password", "Password must be atleast 5 characters").isLength({
     min: 5,
   }),
+  body("email", "Enter a valid email"),
+  body("email", "Enter a valid email"),
+  body("email", "Enter a valid email"),
+  body("email", "Enter a valid email"),
+  body("email", "Enter a valid email"),
   async (req, res) => {
     let success = false;
     // Finds the validation errors in this request and wraps them in an object with handy functions
@@ -48,6 +53,12 @@ router.post(
         name: req.body.name,
         email: req.body.email,
         password: secPass,
+        phone: req.body.phone,
+        role: req.body.role,
+        interest: req.body.interest,
+        work: req.body.work,
+        company: req.body.company,
+        experience: req.body.experience,
       });
       const data = {
         session: {
