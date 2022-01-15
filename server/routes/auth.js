@@ -7,7 +7,7 @@ const fetchUser = require("../middleware/fetchUser");
 const env = require("dotenv/config");
 const User = require("../models/User");
 const multer = require("multer");
-const path = require ('path')
+const path = require('path')
 
 const JWT_SECRET = "secretkeyforsession";
 
@@ -130,7 +130,7 @@ router.post(
 // ROUTE3: Get logged in user details: login required
 router.get("/getUser", fetchUser, async (req, res) => {
   try {
-    const user = await User.findById(req.user.id).select("password");
+    const user = await User.findById(req.user.id);
     res.send(user);
   } catch (error) {
     console.log(error.message);
