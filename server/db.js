@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
-const uri = process.env.REACT_APP_API ;
+const uri =
+  "mongodb+srv://pari:newpassword@cluster0.wiomu.mongodb.net/demodb?retryWrites=true&w=majority";
 const connectToMongo = () => {
   mongoose.connect(
     uri,

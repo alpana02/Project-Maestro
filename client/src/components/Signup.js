@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import axios from 'axios'
 
 export const Signup = (props) => {
   let navigate = useNavigate();
-  
+
   const [credentials, setcredentials] = useState({
     name: "",
     email: "",
@@ -14,47 +15,43 @@ export const Signup = (props) => {
     work: "",
     company: "",
     experience: "",
-    img:"",
+    img: "",
   });
 
   const onChange = (e) => {
     setcredentials({ ...credentials, [e.target.name]: e.target.value });
   };
 
-  const onPhoto = (e) =>{
-    setcredentials({...credentials, img: e.target.files[0]});
-    console.log(credentials.img);
-  }
+  const onPhoto = (e) => {
+    setcredentials({ ...credentials, img: e.target.files[0] });
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch("http://localhost:5000/api/auth/signup", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        name: credentials.name,
-        email: credentials.email,
-        password: credentials.password,
-        classsp: credentials.classsp,
-        role: credentials.role,
-        interest: credentials.interest,
-        work: credentials.work,
-        company: credentials.company,
-        experience: credentials.experience,
-        img: credentials.img,
-      }),
-    });
-    const json = await response.json();
+    const formData = new FormData();
+    formData.append("name", credentials.name);
+    formData.append("email", credentials.email);
+    formData.append("password", credentials.password);
+    formData.append("classsp", credentials.classsp);
+    formData.append("role", credentials.role);
+    formData.append("interest", credentials.interest);
+    formData.append("work", credentials.work);
+    formData.append("company", credentials.company);
+    formData.append("experience", credentials.experience);
+    formData.append("img", credentials.img);
+    const response = await axios.post(
+      "http://localhost:5000/api/auth/signup",
+      formData
+    );
+    const json = response.data;
     console.log(json);
     if (json.success) {
       // save tha uth and redirect
       localStorage.setItem("token", json.authToken);
       navigate("/");
-      props.showAlert('Account Created Succesfully', 'success')
+      props.showAlert("Account Created Succesfully", "success");
     } else {
-      props.showAlert('Invalid Details', 'danger')
+      props.showAlert("Invalid Details", "danger");
     }
   };
   return (
@@ -67,12 +64,18 @@ export const Signup = (props) => {
                 <div className="row g-0">
                   <div className="col-lg-6">
                     <div className="card-body p-md-5 mx-md-4">
-
-                      <form onSubmit={handleSubmit}>
+                      <form
+                        onSubmit={handleSubmit}
+                        encType="multipart/form-data"
+                      >
                         <h2>Create an account</h2>
 
                         <div className="form-outline">
-                          <label htmlFor="name" className="form-label" style={{fontSize:"14px"}}>
+                          <label
+                            htmlFor="name"
+                            className="form-label"
+                            style={{ fontSize: "14px" }}
+                          >
                             Name
                           </label>
                           <input
@@ -87,7 +90,11 @@ export const Signup = (props) => {
                           />
                         </div>
                         <div className="mb-1">
-                          <label htmlFor="email" className="form-label" style={{fontSize:"14px"}}>
+                          <label
+                            htmlFor="email"
+                            className="form-label"
+                            style={{ fontSize: "14px" }}
+                          >
                             Email address
                           </label>
                           <input
@@ -102,7 +109,11 @@ export const Signup = (props) => {
                           />
                         </div>
                         <div className="mb-1">
-                          <label htmlFor="password" className="form-label" style={{fontSize:"14px"}}>
+                          <label
+                            htmlFor="password"
+                            className="form-label"
+                            style={{ fontSize: "14px" }}
+                          >
                             Password
                           </label>
                           <input
@@ -117,8 +128,12 @@ export const Signup = (props) => {
                           />
                         </div>
                         <div className="mb-1">
-                          <label htmlFor="classsp" className="form-label" style={{fontSize:"14px"}}>
-                          Class Specialization 
+                          <label
+                            htmlFor="classsp"
+                            className="form-label"
+                            style={{ fontSize: "14px" }}
+                          >
+                            Class Specialization
                           </label>
                           <input
                             type="number"
@@ -130,7 +145,11 @@ export const Signup = (props) => {
                           />
                         </div>
                         <div className="mb-1">
-                          <label htmlFor="interest" className="form-label" style={{fontSize:"14px"}}>
+                          <label
+                            htmlFor="interest"
+                            className="form-label"
+                            style={{ fontSize: "14px" }}
+                          >
                             Interest
                           </label>
                           <input
@@ -143,7 +162,11 @@ export const Signup = (props) => {
                           />
                         </div>
                         <div className="mb-1">
-                          <label htmlFor="work" className="form-label" style={{fontSize:"14px"}}>
+                          <label
+                            htmlFor="work"
+                            className="form-label"
+                            style={{ fontSize: "14px" }}
+                          >
                             Work
                           </label>
                           <input
@@ -156,7 +179,11 @@ export const Signup = (props) => {
                           />
                         </div>
                         <div className="mb-1">
-                          <label htmlFor="company" className="form-label" style={{fontSize:"14px"}}>
+                          <label
+                            htmlFor="company"
+                            className="form-label"
+                            style={{ fontSize: "14px" }}
+                          >
                             Company
                           </label>
                           <input
@@ -169,7 +196,11 @@ export const Signup = (props) => {
                           />
                         </div>
                         <div className="mb-1">
-                          <label htmlFor="experience" className="form-label" style={{fontSize:"14px"}}>
+                          <label
+                            htmlFor="experience"
+                            className="form-label"
+                            style={{ fontSize: "14px" }}
+                          >
                             Years of Experience
                           </label>
                           <input
@@ -182,7 +213,11 @@ export const Signup = (props) => {
                           />
                         </div>
                         <div className="mb-1">
-                          <label htmlFor="img" className="form-label" style={{fontSize:"14px"}}>
+                          <label
+                            htmlFor="img"
+                            className="form-label"
+                            style={{ fontSize: "14px" }}
+                          >
                             Upload image
                           </label>
                           <input
@@ -190,32 +225,39 @@ export const Signup = (props) => {
                             className="form-control"
                             name="img"
                             id="img"
-                            value={credentials.img}
-                            onChange={onChange}
+                            onChange={onPhoto}
                           />
                         </div>
                         <div className="text-center mt-4 mb-3 pb-1">
                           <button type="submit" className="btn btn-primary">
                             Submit
                           </button>
-
                         </div>
 
                         <div className="d-flex align-items-center justify-content-center pb-4">
                           <p className="mb-0 me-2">Already have an account?</p>
-                          <Link type="button" className="btn btn-outline-danger" to="/login" role="button">
+                          <Link
+                            type="button"
+                            className="btn btn-outline-danger"
+                            to="/login"
+                            role="button"
+                          >
                             Login
                           </Link>
                         </div>
-
                       </form>
-
                     </div>
                   </div>
                   <div className="col-lg-6 d-flex align-items-center gradient-custom-2">
                     <div className="text-white px-3 py-4 p-md-5 mx-md-4">
                       <h4 className="mb-4">We are more than just a company</h4>
-                      <p className="small mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                      <p className="small mb-0">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing
+                        elit, sed do eiusmod tempor incididunt ut labore et
+                        dolore magna aliqua. Ut enim ad minim veniam, quis
+                        nostrud exercitation ullamco laboris nisi ut aliquip ex
+                        ea commodo consequat.
+                      </p>
                     </div>
                   </div>
                 </div>
