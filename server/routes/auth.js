@@ -96,7 +96,7 @@ router.post(
     }
     const { email, password } = req.body;
     try {
-      //check whteher user with this email exists
+      //check whether user with this email exists
       let user = await User.findOne({ email });
       if (!user) {
         return res.status(400).send({
@@ -132,6 +132,17 @@ router.get("/getUser", fetchUser, async (req, res) => {
   try {
     const user = await User.findById(req.user.id);
     res.send(user);
+  } catch (error) {
+    console.log(error.message);
+    res.status(500).send("Oops internal server error occured");
+  }
+});
+
+
+router.get("/getAllusers", fetchUser, async (req, res) => {
+  try {
+    const data = await User.find({ role: "mentor" })
+    res.send(data)
   } catch (error) {
     console.log(error.message);
     res.status(500).send("Oops internal server error occured");
