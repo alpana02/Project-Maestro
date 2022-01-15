@@ -6,6 +6,7 @@ const jwt = require("jsonwebtoken");
 const fetchUser = require("../middleware/fetchUser");
 const env = require("dotenv/config");
 const User = require("../models/User");
+const multer = require('multer');
 
 const JWT_SECRET = "secretkeyforsession";
 
@@ -18,10 +19,6 @@ router.post(
   body("password", "Password must be atleast 5 characters").isLength({
     min: 5,
   }),
-  body("email", "Enter a valid email"),
-  body("email", "Enter a valid email"),
-  body("email", "Enter a valid email"),
-  body("email", "Enter a valid email"),
   body("email", "Enter a valid email"),
   async (req, res) => {
     let success = false;
@@ -53,12 +50,12 @@ router.post(
         name: req.body.name,
         email: req.body.email,
         password: secPass,
-        phone: req.body.phone,
         role: req.body.role,
-        interest: req.body.interest,
+        classsp: req.body.classsp,
         work: req.body.work,
         company: req.body.company,
         experience: req.body.experience,
+        img: req.body.img
       });
       const data = {
         session: {
@@ -125,7 +122,7 @@ router.post(
 );
 
 // ROUTE3: Get logged in user details: login required
-router.post("/getUser", fetchUser, async (req, res) => {
+router.get("/getUser", fetchUser, async (req, res) => {
   try {
     const user = await User.findById(req.user.id).select("password");
     res.send(user);
@@ -134,5 +131,27 @@ router.post("/getUser", fetchUser, async (req, res) => {
     res.status(500).send("Oops internal server error occured");
   }
 });
+
+//defining the local storage location so that the files received from the client will be saved in the defined location.
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "uploads");
+  },
+  filename: (req, file, cb) => {
+    cb(null, "img" + "_" + Date.now() + path.extname(file.originalname));
+  },
+});
+
+const fileFilter = (req, file, cb) => {
+  const allowedFileTypes = ['image/jpeg', 'image/jpg', 'image/png'];
+  if(allowedFileTypes.includes(file.mimetype)){
+    cb(null, true);
+  }
+  else{
+    cb(null, false);
+  }
+}
+
+let upload = multer({storage, fileFilter});
 
 module.exports = router;

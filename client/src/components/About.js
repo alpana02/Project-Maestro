@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import './About.css'
 
+
 export default function About(props) {
   let navigate = useNavigate();
   useEffect(() => {
@@ -21,8 +22,7 @@ export default function About(props) {
               <h4 className="text-right">Profile Settings</h4>
             </div>
             <div className="row mt-2">
-              <div className="col-md-6"><label className="labels">Name</label><input type="text" className="form-control" placeholder="first name" value="" /></div>
-              <div className="col-md-6"><label className="labels">Surname</label><input type="text" className="form-control" value="" placeholder="surname" /></div>
+              <div className="col-md-12"><label className="labels">Name</label><input type="text" className="form-control" placeholder="first name" value="" /></div>
             </div>
             <div className="row mt-3">
               <div className="col-md-12"><label className="labels">Mobile Number</label><input type="text" className="form-control" placeholder="enter phone number" value="" /></div>

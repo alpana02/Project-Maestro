@@ -7,13 +7,13 @@ export const SignupMentee = (props) => {
     name: "",
     email: "",
     password: "",
-    cpassword: "",
-    phone: "",
+    classsp: "",
     role: "mentee",
     interest: "",
     work: "",
     company: "",
     experience: "",
+    img:"",
   });
 
   const onChange = (e) => {
@@ -31,9 +31,8 @@ export const SignupMentee = (props) => {
         name: credentials.name,
         email: credentials.email,
         password: credentials.password,
-        phone: credentials.phone,
         role: credentials.role,
-        interest: credentials.interest,
+        classsp: credentials.classsp,
       }),
     });
     const json = await response.json();
@@ -108,49 +107,19 @@ export const SignupMentee = (props) => {
                             required
                           />
                         </div>
-
                         <div className="form-outline mb-4">
-                          <label htmlFor="cpassword" className="form-label">
-                            Confirm Password
+                          <label htmlFor="classsp" className="form-label">
+                            Class
                           </label>
                           <input
-                            type="password"
+                            type="number"
                             className="form-control"
-                            name="cpassword"
-                            id="cpassword"
-                            value={credentials.cpassword}
-                            onChange={onChange}
-                            minLength={5}
-                          />
-                        </div>
-                        <div className="form-outline mb-4">
-                          <label htmlFor="phone" className="form-label">
-                            Phone Number
-                          </label>
-                          <input
-                            type="text"
-                            className="form-control"
-                            name="phone"
-                            id="phone"
-                            value={credentials.phone}
+                            name="classsp"
+                            id="classsp"
+                            value={credentials.classsp}
                             onChange={onChange}
                           />
                         </div>
-                        <div className="form-outline mb-4">
-                          <label htmlFor="interest" className="form-label">
-                            Interest
-                          </label>
-                          <input
-                            type="text"
-                            className="form-control"
-                            name="interest"
-                            id="interest"
-                            value={credentials.interest}
-                            onChange={onChange}
-                          />
-                        </div>
-
-
                         <div className="text-center mb-3 pb-1">
                           <button type="submit" className="btn btn-primary">
                             Submit

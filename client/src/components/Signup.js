@@ -3,22 +3,28 @@ import { useNavigate, Link } from "react-router-dom";
 
 export const Signup = (props) => {
   let navigate = useNavigate();
+  
   const [credentials, setcredentials] = useState({
     name: "",
     email: "",
     password: "",
-    cpassword: "",
-    phone: "",
+    classsp: "",
     role: "mentor",
     interest: "",
     work: "",
     company: "",
     experience: "",
+    img:"",
   });
 
   const onChange = (e) => {
     setcredentials({ ...credentials, [e.target.name]: e.target.value });
   };
+
+  const onPhoto = (e) =>{
+    setcredentials({...credentials, img: e.target.files[0]});
+    console.log(credentials.img);
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -31,12 +37,13 @@ export const Signup = (props) => {
         name: credentials.name,
         email: credentials.email,
         password: credentials.password,
-        phone: credentials.phone,
+        classsp: credentials.classsp,
         role: credentials.role,
         interest: credentials.interest,
         work: credentials.work,
         company: credentials.company,
         experience: credentials.experience,
+        img: credentials.img,
       }),
     });
     const json = await response.json();
@@ -110,29 +117,15 @@ export const Signup = (props) => {
                           />
                         </div>
                         <div className="mb-1">
-                          <label htmlFor="cpassword" className="form-label" style={{fontSize:"14px"}}>
-                            Confirm Password
+                          <label htmlFor="classsp" className="form-label" style={{fontSize:"14px"}}>
+                          Class Specialization 
                           </label>
                           <input
-                            type="password"
+                            type="number"
                             className="form-control"
-                            name="cpassword"
-                            id="cpassword"
-                            value={credentials.cpassword}
-                            onChange={onChange}
-                            minLength={5}
-                          />
-                        </div>
-                        <div className="mb-1">
-                          <label htmlFor="phone" className="form-label" style={{fontSize:"14px"}}>
-                            Phone Number
-                          </label>
-                          <input
-                            type="text"
-                            className="form-control"
-                            name="phone"
-                            id="phone"
-                            value={credentials.phone}
+                            name="classsp"
+                            id="classsp"
+                            value={credentials.classsp}
                             onChange={onChange}
                           />
                         </div>
@@ -188,8 +181,19 @@ export const Signup = (props) => {
                             onChange={onChange}
                           />
                         </div>
-
-
+                        <div className="mb-1">
+                          <label htmlFor="img" className="form-label" style={{fontSize:"14px"}}>
+                            Upload image
+                          </label>
+                          <input
+                            type="file"
+                            className="form-control"
+                            name="img"
+                            id="img"
+                            value={credentials.img}
+                            onChange={onChange}
+                          />
+                        </div>
                         <div className="text-center mt-4 mb-3 pb-1">
                           <button type="submit" className="btn btn-primary">
                             Submit
