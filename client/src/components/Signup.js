@@ -44,7 +44,6 @@ export const Signup = (props) => {
       formData
     );
     const json = response.data;
-    console.log(json);
     if (json.success) {
       // save tha uth and redirect
       localStorage.setItem("token", json.authToken);

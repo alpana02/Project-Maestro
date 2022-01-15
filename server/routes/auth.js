@@ -36,16 +36,9 @@ let upload = multer({ storage, fileFilter });
 // Route1: signup
 router.post(
   "/signup",
-  body("name", "Enter a valid name").isLength({ min: 3 }),
-  body("email", "Enter a valid email").isEmail(),
-  body("password", "Password must be atleast 5 characters").isLength({
-    min: 5,
-  }),
   upload.single('img'),
   async (req, res) => {
     let success = false;
-    // Finds the validation errors in this request and wraps them in an object with handy functions
-
     try {
       //check whteher user with this email exists
       let user = await User.findOne({ email: req.body.email });
