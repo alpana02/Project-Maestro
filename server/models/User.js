@@ -31,7 +31,8 @@ const UserSchema = new Schema({
     type: String,
   },
   img: {
-    data: String,
+    data: Buffer,
+    contentType: String,
   },
 });
 const User = new mongoose.model("user", UserSchema);

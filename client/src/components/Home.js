@@ -23,7 +23,6 @@ export default function Home(props) {
         })
         const data = await response.json();
         setusercards(data);
-        console.log(data)
     };
 
 
@@ -33,7 +32,7 @@ export default function Home(props) {
             <div>
 
                 <div className='conatiner mt-5'>
-                    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+                    <nav className="navbar navbar-expand-lg navbar-light bg-light my-5">
                         <div className="container-fluid">
                             <a className="navbar-brand" href="/">Choose Class</a>
                             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -167,16 +166,25 @@ export default function Home(props) {
             </div>
             <div>
                 {
-                    usercards.map((usercards, index) => (
-
-                        <div className="card">
-                            <div className="container">
-                                <h4> <b>{usercards.name}</b></h4>
-                                <p>Role: {usercards.role}</p>
-                                <div>Email: {usercards.email}</div>
-                            </div>
+                    <div class="col-12 mt-3">
+                        <div class="row">
+                            {usercards.map((usercards, index) => (
+                                <div class="col-xl-3 col-md-6 mb-xl-5 mb-7 mb-sm-6 mb-md-6 mb-lg-6 d-flex">
+                                    <div class="card" style={{ width: "18rem" }}>
+                                        <img width='500' height='200' src={`data:image/png;base64,${usercards.img.data}`} class="card-img-top" alt={usercards.name} />
+                                        <div class="card-body">
+                                            <h5 class="card-title">{usercards.name}</h5>
+                                            <p class="card-text" style={{ fontSize: "14px", marginBottom: "0.3rem" }}><b>{usercards.work}</b> at {usercards.company}</p>
+                                            <p class="card-text" style={{ fontSize: "14px", marginBottom: "0.3rem" }}><b>Class Specialization :</b> {usercards.classsp}</p>
+                                            <p class="card-text" style={{ fontSize: "14px" }}><b>Years of experience : </b> {usercards.experience}</p>
+                                            <a href="#" class="btn btn-primary">View Profile</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
                         </div>
-                    ))
+                    </div>
+
                 }
             </div>
         </div>

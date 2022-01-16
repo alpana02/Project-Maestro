@@ -8,6 +8,7 @@ const env = require("dotenv/config");
 const User = require("../models/User");
 const multer = require("multer");
 const path = require('path')
+const fs = require("fs");
 
 const JWT_SECRET = "secretkeyforsession";
 
@@ -63,8 +64,15 @@ router.post(
         work: req.body.work,
         company: req.body.company,
         experience: req.body.experience,
-        img: req.file.filename,
+        img: {
+          data: fs.readFileSync(
+            path.join(__dirname, `../uploads/${req.file.filename}`)
+          ),
+          contentType: "image/png",
+        },
       });
+      console.log(req.file);
+      console.log(req.file.filename);
       const data = {
         session: {
           id: user.id,
