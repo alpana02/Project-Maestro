@@ -59,6 +59,10 @@ export default function Home(props) {
                   <option value="4">4</option>
                   <option value="5">5</option>
                   <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
                 </select>
               </div>
               <div className="col-3">
@@ -96,7 +100,7 @@ export default function Home(props) {
                     <img
                       width="500"
                       height="200"
-                      src={`${usercards.img.data.toString()}`}
+                      src="https://picsum.photos/seed/picsum/200/300"
                       className="card-img-top"
                       alt={usercards.name}
                     />
@@ -114,9 +118,13 @@ export default function Home(props) {
                       >
                         <b>Class Specialization :</b> {usercards.classsp}
                       </p>
+                      <p className="card-text" style={{ fontSize: "14px", marginBottom: "0.3rem"  }}>
+                        <b>Subject Specialization : </b> {usercards.subject}
+                      </p>
                       <p className="card-text" style={{ fontSize: "14px" }}>
                         <b>Years of experience : </b> {usercards.experience}
                       </p>
+
                       <a href="#" className="btn btn-primary">
                         View Profile
                       </a>

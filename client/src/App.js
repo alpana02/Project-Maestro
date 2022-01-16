@@ -14,6 +14,7 @@ import { Signup } from "./components/Signup";
 import { useState } from "react";
 import SignupHome from "./components/SignupHome";
 import { SignupMentee } from "./components/SignupMentee";
+import DirectMessaging from './components/DirectMessaging';
 
 
 function App() {
@@ -36,7 +37,7 @@ function App() {
           <Routes>
             <Route exact path="/" element={<Home showAlert={showAlert} />} />
             <Route exact path="/about" element={<About />} />
-            <Route exact path="/chat" element={<Chat />} />
+            <Route exact path="/chat" element={<DirectMessaging/>} />
             <Route exact path="/discussion" element={<Discussion />} />
             <Route exact path="/student_notes" element={<StudentNotes showAlert={showAlert} />} />
             <Route exact path="/login" element={<Login showAlert={showAlert} />} />

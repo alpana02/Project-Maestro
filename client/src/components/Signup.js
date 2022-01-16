@@ -148,23 +148,6 @@ export const Signup = (props) => {
                         </div>
                         <div className="mb-1">
                           <label
-                            htmlFor="interest"
-                            className="form-label"
-                            style={{ fontSize: "14px" }}
-                          >
-                            Interest
-                          </label>
-                          <input
-                            type="text"
-                            className="form-control"
-                            name="interest"
-                            id="interest"
-                            value={credentials.interest}
-                            onChange={onChange}
-                          />
-                        </div>
-                        <div className="mb-1">
-                          <label
                             htmlFor="work"
                             className="form-label"
                             style={{ fontSize: "14px" }}
@@ -212,6 +195,7 @@ export const Signup = (props) => {
                             id="experience"
                             value={credentials.experience}
                             onChange={onChange}
+                            required
                           />
                         </div>
                         <div className="mb-1">
@@ -227,7 +211,9 @@ export const Signup = (props) => {
                             name="subject"
                             onChange={onChange}
                             aria-label="Default select example"
+                            required
                           >
+                            <option selected>Select Subject</option>
                             <option value="math">Math</option>
                             <option value="science">Science</option>
                             <option value="english">English</option>
