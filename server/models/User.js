@@ -34,6 +34,9 @@ const UserSchema = new Schema({
     data: Buffer,
     contentType: String,
   },
+  subject: {
+    type: String
+  },
 });
 const User = new mongoose.model("user", UserSchema);
 User.createIndexes();

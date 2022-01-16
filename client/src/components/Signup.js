@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import axios from 'axios'
+import axios from "axios";
 
 export const Signup = (props) => {
   let navigate = useNavigate();
@@ -16,6 +16,7 @@ export const Signup = (props) => {
     company: "",
     experience: "",
     img: "",
+    subject: "",
   });
 
   const onChange = (e) => {
@@ -39,6 +40,8 @@ export const Signup = (props) => {
     formData.append("company", credentials.company);
     formData.append("experience", credentials.experience);
     formData.append("img", credentials.img);
+    formData.append("subject", credentials.subject);
+
     const response = await axios.post(
       "http://localhost:5000/api/auth/signup",
       formData
@@ -210,6 +213,25 @@ export const Signup = (props) => {
                             value={credentials.experience}
                             onChange={onChange}
                           />
+                        </div>
+                        <div className="mb-1">
+                        <label
+                            htmlFor="experience"
+                            className="form-label"
+                            style={{ fontSize: "14px" }}
+                          >
+                            Subject
+                          </label>
+                          <select
+                            className="form-select"
+                            name="subject"
+                            onChange={onChange}
+                            aria-label="Default select example"
+                          >
+                            <option value="math">Math</option>
+                            <option value="science">Science</option>
+                            <option value="english">English</option>
+                          </select>
                         </div>
                         <div className="mb-1">
                           <label

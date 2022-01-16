@@ -1,192 +1,133 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import './Home.css'
+import "./Home.css";
 
 export default function Home(props) {
-    let navigate = useNavigate();
-    const [usercards, setusercards] = useState([])
-    useEffect(() => {
-        if (!localStorage.getItem("token")) {
-            navigate("/login");
+  let navigate = useNavigate();
+  const [usercards, setusercards] = useState([]);
+  const [totalcards, settotalcards] = useState([])
+  const [filterCard, setFilter] = useState({ class: "", subject: "" });
 
-        }
-        getAllUsers()
-    }, []);
-
-    async function getAllUsers() {
-        const response = await fetch(`http://localhost:5000/api/auth/getAllusers`, {
-            method: "GET",
-            headers: {
-                "auth-token": localStorage.getItem("token"),
-            },
-
-        })
-        const data = await response.json();
-        setusercards(data);
-    };
-
-
-    return (
-        <div>
-
-            <div>
-
-                <div className='conatiner mt-5'>
-                    <nav className="navbar navbar-expand-lg navbar-light bg-light my-5">
-                        <div className="container-fluid">
-                            <a className="navbar-brand" href="/">Choose Class</a>
-                            <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                                <span className="navbar-toggler-icon"></span>
-                            </button>
-                            <div className="collapse navbar-collapse" id="navbarNavDropdown">
-                                <ul className="navbar-nav">
-                                    <li className="nav-item dropdown mx-2">
-                                        <a className="nav-link dropdown-toggle" href="/" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                            Class 1
-                                        </a>
-                                        <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                            <li><a className="dropdown-item" href="/">Math</a></li>
-                                            <li><a className="dropdown-item" href="/">Science</a></li>
-                                            <li><a className="dropdown-item" href="/">English</a></li>
-                                        </ul>
-                                    </li>
-                                    <li className="nav-item dropdown mx-2">
-                                        <a className="nav-link dropdown-toggle" href="/" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                            Class 2
-                                        </a>
-                                        <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                            <li><a className="dropdown-item" href="/">Math</a></li>
-                                            <li><a className="dropdown-item" href="/">Science</a></li>
-                                            <li><a className="dropdown-item" href="/">English</a></li>
-                                        </ul>
-                                    </li>
-                                    <li className="nav-item dropdown mx-2">
-                                        <a className="nav-link dropdown-toggle" href="/" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                            Class 3
-                                        </a>
-                                        <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                            <li><a className="dropdown-item" href="/">Math</a></li>
-                                            <li><a className="dropdown-item" href="/">Science</a></li>
-                                            <li><a className="dropdown-item" href="/">English</a></li>
-                                        </ul>
-                                    </li>
-                                    <li className="nav-item dropdown mx-2">
-                                        <a className="nav-link dropdown-toggle" href="/" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                            Class 4
-                                        </a>
-                                        <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                            <li><a className="dropdown-item" href="/">Math</a></li>
-                                            <li><a className="dropdown-item" href="/">Science</a></li>
-                                            <li><a className="dropdown-item" href="/">English</a></li>
-                                        </ul>
-                                    </li>
-                                    <li className="nav-item dropdown mx-2">
-                                        <a className="nav-link dropdown-toggle" href="/" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                            Class 5
-                                        </a>
-                                        <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                            <li><a className="dropdown-item" href="/">Math</a></li>
-                                            <li><a className="dropdown-item" href="/">Science</a></li>
-                                            <li><a className="dropdown-item" href="/">English</a></li>
-                                        </ul>
-                                    </li>
-                                    <li className="nav-item dropdown mx-2">
-                                        <a className="nav-link dropdown-toggle" href="/" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                            Class 6
-                                        </a>
-                                        <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                            <li><a className="dropdown-item" href="/">Math</a></li>
-                                            <li><a className="dropdown-item" href="/">Science</a></li>
-                                            <li><a className="dropdown-item" href="/">English</a></li>
-                                        </ul>
-                                    </li>
-                                    <li className="nav-item dropdown mx-2">
-                                        <a className="nav-link dropdown-toggle" href="/" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                            Class 7
-                                        </a>
-                                        <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                            <li><a className="dropdown-item" href="/">Math</a></li>
-                                            <li><a className="dropdown-item" href="/">Science</a></li>
-                                            <li><a className="dropdown-item" href="/">English</a></li>
-                                        </ul>
-                                    </li>
-                                    <li className="nav-item dropdown mx-2">
-                                        <a className="nav-link dropdown-toggle" href="/" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                            Class 8
-                                        </a>
-                                        <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                            <li><a className="dropdown-item" href="/">Math</a></li>
-                                            <li><a className="dropdown-item" href="/">Science</a></li>
-                                            <li><a className="dropdown-item" href="/">English</a></li>
-                                        </ul>
-                                    </li><li className="nav-item dropdown mx-2">
-                                        <a className="nav-link dropdown-toggle" href="/" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                            Class 9
-                                        </a>
-                                        <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                            <li><a className="dropdown-item" href="/">Math</a></li>
-                                            <li><a className="dropdown-item" href="/">Science</a></li>
-                                            <li><a className="dropdown-item" href="/">English</a></li>
-                                        </ul>
-                                    </li><li className="nav-item dropdown mx-2">
-                                        <a className="nav-link dropdown-toggle" href="/" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                            Class 10
-                                        </a>
-                                        <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                            <li><a className="dropdown-item" href="/">Math</a></li>
-                                            <li><a className="dropdown-item" href="/">Science</a></li>
-                                            <li><a className="dropdown-item" href="/">English</a></li>
-                                        </ul>
-                                    </li>
-                                    <li className="nav-item dropdown mx-1.5">
-                                        <a className="nav-link dropdown-toggle" href="/" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                            Class 11
-                                        </a>
-                                        <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                            <li><a className="dropdown-item" href="/">Math</a></li>
-                                            <li><a className="dropdown-item" href="/">Science</a></li>
-                                            <li><a className="dropdown-item" href="/">English</a></li>
-                                        </ul>
-                                    </li>
-                                    <li className="nav-item dropdown mx-3">
-                                        <a className="nav-link dropdown-toggle" href="/" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                            Class 12
-                                        </a>
-                                        <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                            <li><a className="dropdown-item" href="/">Math</a></li>
-                                            <li><a className="dropdown-item" href="/">Science</a></li>
-                                            <li><a className="dropdown-item" href="/">English</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </nav>
-                </div>
-            </div>
-            <div>
-                {
-                    <div class="col-12 mt-3">
-                        <div class="row">
-                            {usercards.map((usercards, index) => (
-                                <div class="col-xl-3 col-md-6 mb-xl-5 mb-7 mb-sm-6 mb-md-6 mb-lg-6 d-flex">
-                                    <div class="card" style={{ width: "18rem" }}>
-                                        <img width='500' height='200' src={`data:image/png;base64,${usercards.img.data}`} class="card-img-top" alt={usercards.name} />
-                                        <div class="card-body">
-                                            <h5 class="card-title">{usercards.name}</h5>
-                                            <p class="card-text" style={{ fontSize: "14px", marginBottom: "0.3rem" }}><b>{usercards.work}</b> at {usercards.company}</p>
-                                            <p class="card-text" style={{ fontSize: "14px", marginBottom: "0.3rem" }}><b>Class Specialization :</b> {usercards.classsp}</p>
-                                            <p class="card-text" style={{ fontSize: "14px" }}><b>Years of experience : </b> {usercards.experience}</p>
-                                            <a href="#" class="btn btn-primary">View Profile</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-
-                }
-            </div>
-        </div>
+  useEffect(() => {
+    if (!localStorage.getItem("token")) {
+      navigate("/login");
+    }
+    getAllUsers();
+  }, []);
+  async function getAllUsers() {
+    const response = await fetch(`http://localhost:5000/api/auth/getAllusers`, {
+      method: "GET",
+      headers: {
+        "auth-token": localStorage.getItem("token"),
+      },
+    });
+    const data = await response.json();
+    setusercards(data);
+    settotalcards(data)
+  }
+  async function handleSubmit(e) {
+    e.preventDefault();
+    const res = totalcards.filter(
+      (card) =>{
+        return card.classsp === filterCard.class &&  card.subject === filterCard.subject && card.role === "mentor"
+      }
     );
+    setusercards(res);
+  }
+  const onChange = (e) => {
+    setFilter({ ...filterCard, [e.target.name]: e.target.value });
+  };
+
+  return (
+    <div>
+      <form onSubmit={handleSubmit}>
+        <div className="conatiner mt-5">
+          <div className="container">
+            <div className="row">
+              <h4>Filter</h4>
+              <div className="col-3">
+                <select
+                  className="form-select"
+                  name="class"
+                  onChange={onChange}
+                  aria-label="Default select example"
+                >
+                  <option selected>Select Class</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                </select>
+              </div>
+              <div className="col-3">
+                <select
+                  className="form-select"
+                  name="subject"
+                  onChange={onChange}
+                  aria-label="Default select example"
+                >
+                  <option selected>Select Subject</option>
+                  <option value="math">Math</option>
+                  <option value="science">Science</option>
+                  <option value="english">English</option>
+                </select>
+              </div>
+              <div className="col-3">
+                <button type="submit" class="btn btn-primary">
+                  Submit
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+
+      <div>
+        {
+          <div className="col-12 mt-3">
+            <div className="row">
+              {usercards.map((usercards, index) => (
+                
+                <div className="col-xl-3 col-md-6 mb-xl-5 mb-7 mb-sm-6 mb-md-6 mb-lg-6 d-flex">
+                  {console.log(usercards.img.data)}
+                  <div className="card" style={{ width: "18rem" }}>
+                    <img
+                      width="500"
+                      height="200"
+                      src={`${usercards.img.data.toString()}`}
+                      className="card-img-top"
+                      alt={usercards.name}
+                    />
+                    <div className="card-body">
+                      <h5 className="card-title">{usercards.name}</h5>
+                      <p
+                        className="card-text"
+                        style={{ fontSize: "14px", marginBottom: "0.3rem" }}
+                      >
+                        <b>{usercards.work}</b> at {usercards.company}
+                      </p>
+                      <p
+                        className="card-text"
+                        style={{ fontSize: "14px", marginBottom: "0.3rem" }}
+                      >
+                        <b>Class Specialization :</b> {usercards.classsp}
+                      </p>
+                      <p className="card-text" style={{ fontSize: "14px" }}>
+                        <b>Years of experience : </b> {usercards.experience}
+                      </p>
+                      <a href="#" className="btn btn-primary">
+                        View Profile
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  );
 }
