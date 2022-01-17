@@ -29,6 +29,8 @@ export const Signup = (props) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+
     const formData = new FormData();
     formData.append("name", credentials.name);
     formData.append("email", credentials.email);
@@ -50,6 +52,7 @@ export const Signup = (props) => {
     if (json.success) {
       // save tha uth and redirect
       localStorage.setItem("token", json.authToken);
+      localStorage.setItem("email", json.user.email);
       navigate("/");
       props.showAlert("Account Created Succesfully", "success");
     } else {
@@ -237,7 +240,7 @@ export const Signup = (props) => {
                         </div>
                         <div className="text-center mt-4 mb-3 pb-1">
                           <button type="submit" className="btn btn-primary">
-                            Submit
+                            Register
                           </button>
                         </div>
 

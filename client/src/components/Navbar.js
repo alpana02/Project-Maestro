@@ -8,6 +8,7 @@ export default function Navbar(props) {
     localStorage.removeItem("token");
     navigate("/login");
     props.showAlert("Logged Out!!", "primary")
+
   };
   return (
     <>

@@ -13,6 +13,7 @@ export default function Home(props) {
       navigate("/login");
     }
     getAllUsers();
+    // eslint-disable-next-line
   }, []);
   async function getAllUsers() {
     const response = await fetch(`http://localhost:5000/api/auth/getAllusers`, {
@@ -125,7 +126,7 @@ export default function Home(props) {
                         <b>Years of experience : </b> {usercards.experience}
                       </p>
 
-                      <a href="#" className="btn btn-primary">
+                      <a href="/" className="btn btn-primary">
                         View Profile
                       </a>
                     </div>

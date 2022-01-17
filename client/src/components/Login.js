@@ -27,6 +27,7 @@ export const Login = (props) => {
     if (json.success) {
       // save tha uth and redirect
       localStorage.setItem("token", json.authToken);
+      localStorage.setItem("email", json.user.email);
       navigate("/");
     } 
   };
@@ -76,7 +77,7 @@ export const Login = (props) => {
                         </div>
 
                         <div className="text-center pt-1 mb-5 pb-1">
-                          <button type="submit" className="btn btn-primary">
+                          <button type="submit" className="btn btn-primary" >
                             Submit
                           </button>
 

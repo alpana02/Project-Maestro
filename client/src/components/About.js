@@ -11,7 +11,7 @@ export default function About(props) {
       navigate("/login");
     }
     getUser();
-
+    // eslint-disable-next-line
   }, []);
 
   // Separate function to get user details

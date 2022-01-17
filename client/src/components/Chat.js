@@ -9,6 +9,7 @@ export default function Chat() {
         if (!localStorage.getItem("token")) {
             navigate("/login");
         }
+        // eslint-disable-next-line
     }, []);
     return (
     <ChatEngine

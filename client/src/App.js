@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import About from "./components/About";
-import Chat from "./components/Chat";
+//import Chat from "./components/Chat";
 import Discussion from "./components/Discussion";
 import NoteState from "./context/notes/NoteState";
 import Alert from "./components/Alert";
@@ -37,7 +37,7 @@ function App() {
           <Routes>
             <Route exact path="/" element={<Home showAlert={showAlert} />} />
             <Route exact path="/about" element={<About />} />
-            <Route exact path="/chat" element={<DirectMessaging/>} />
+            <Route exact path="/chat" element={<DirectMessaging />} />
             <Route exact path="/discussion" element={<Discussion />} />
             <Route exact path="/student_notes" element={<StudentNotes showAlert={showAlert} />} />
             <Route exact path="/login" element={<Login showAlert={showAlert} />} />

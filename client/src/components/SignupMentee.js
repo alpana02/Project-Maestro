@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axios from 'axios'
 
+
 export const SignupMentee = (props) => {
   let navigate = useNavigate();
 
@@ -47,6 +48,7 @@ export const SignupMentee = (props) => {
     if (json.success) {
       // save tha uth and redirect
       localStorage.setItem("token", json.authToken);
+      localStorage.setItem("email", json.user.email);
       navigate("/");
       props.showAlert("Account Created Succesfully", "success");
     } else {

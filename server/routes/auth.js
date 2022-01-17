@@ -78,7 +78,7 @@ router.post("/signup", upload.single("img"), async (req, res) => {
     };
     const authToken = jwt.sign(data, JWT_SECRET);
     success = true;
-    res.json({ success, authToken });
+    res.json({ success, authToken, user });
   } catch (error) {
     console.log(error.message);
     res.status(500).send({
@@ -124,7 +124,7 @@ router.post(
       const authToken = jwt.sign(data, JWT_SECRET);
       console.log("login success");
       success = true;
-      res.json({ success, authToken });
+      res.json({ success, authToken, user });
     } catch (error) {
       console.log(error.message);
       res.status(500).send("Oops internal server error occured");

@@ -8,6 +8,7 @@ export default function Discussion() {
         if (!localStorage.getItem("token")) {
             navigate("/login");
         }
+        // eslint-disable-next-line
     }, []);
     return <div>
         <div className="container rounded bg-white">
