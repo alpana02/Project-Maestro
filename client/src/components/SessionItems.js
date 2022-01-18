@@ -27,7 +27,15 @@ export default function Sessionitem(props) {
               type="button"
             ></i>
           </div>
+          <p className="card-text">{session.title}</p>
+          <p className="card-text">{session.creator}</p>
+          <p className="card-text">{session.subject}</p>
+          <p className="card-text">{session.topic}</p>
+          <p className="card-text">{session.classenrolled}</p>
+          <p className="card-text">{session.date}</p>
+          <p className="card-text">{session.time}</p>
           <p className="card-text">{session.description}</p>
+          <p className="card-text">{session.link}</p>
         </div>
       </div>
     </div>

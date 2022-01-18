@@ -10,15 +10,28 @@ export default function CreateSession(props) {
   const { sessions, getSessions, editSession } = context;
   const [session, setsession] = useState({
     _id: "",
+    creator: "",
     title: "",
+    subject: "",
+    topic: "",
+    classenrolled: "",
+    date: "",
+    time: "",
     description: "",
-    tag: "",
+    link: ""
   });
 
   const handleClick = (e) => {
     e.preventDefault();
     refClose.current.click();
-    editSession(session._id, session.title, session.description, session.tag);
+    editSession(session._id, session.creator, session.title,
+    session.subject,
+    session.topic,
+    session.classenrolled,
+    session.date,
+    session.time,
+    session.description,
+    session.link );
     props.showAlert("Updated Succesfully", "success");
   };
   const onChange = (e) => {
@@ -72,6 +85,21 @@ export default function CreateSession(props) {
             </div>
             <div className="modal-body">
               <form onSubmit={handleClick}>
+              <div className="mb-3">
+                  <label htmlFor="creator" className="form-label">
+                    creator
+                  </label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="creator"
+                    name="creator"
+                    value={session.creator}
+                    onChange={onChange}
+                    minLength={3}
+                    required
+                  />
+                </div>
                 <div className="mb-3">
                   <label htmlFor="title" className="form-label">
                     Title
@@ -88,8 +116,75 @@ export default function CreateSession(props) {
                   />
                 </div>
                 <div className="mb-3">
+                  <label htmlFor="subject" className="form-label">
+                    subject
+                  </label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="subject"
+                    name="subject"
+                    value={session.subject}
+                    onChange={onChange}
+                    minLength={5}
+                    required
+                  />
+                </div>
+                <div className="mb-3">
+                  <label htmlFor="topic" className="form-label">
+                    topics
+                  </label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="topic"
+                    name="topic"
+                    value={session.topic}
+                    onChange={onChange}
+                  />
+                </div>
+                <div className="mb-3">
+                  <label htmlFor="classenrolled" className="form-label">
+                    class
+                  </label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="classenrolled"
+                    name="classenrolled"
+                    value={session.classenrolled}
+                    onChange={onChange}
+                  />
+                </div>
+                <div className="mb-3">
+                  <label htmlFor="date" className="form-label">
+                    date
+                  </label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="date"
+                    name="date"
+                    value={session.date}
+                    onChange={onChange}
+                  />
+                </div>
+                <div className="mb-3">
+                  <label htmlFor="time" className="form-label">
+                    time
+                  </label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="time"
+                    name="time"
+                    value={session.time}
+                    onChange={onChange}
+                  />
+                </div>
+                <div className="mb-3">
                   <label htmlFor="description" className="form-label">
-                    Description
+                    description
                   </label>
                   <input
                     type="text"
@@ -98,20 +193,18 @@ export default function CreateSession(props) {
                     name="description"
                     value={session.description}
                     onChange={onChange}
-                    minLength={5}
-                    required
                   />
                 </div>
                 <div className="mb-3">
-                  <label htmlFor="tag" className="form-label">
-                    Tags
+                  <label htmlFor="link" className="form-label">
+                    links
                   </label>
                   <input
                     type="text"
                     className="form-control"
-                    id="tag"
-                    name="tag"
-                    value={session.tag}
+                    id="link"
+                    name="link"
+                    value={session.link}
                     onChange={onChange}
                   />
                 </div>

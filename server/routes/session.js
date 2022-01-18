@@ -19,9 +19,17 @@ router.get("/fetchallsessions", fetchUser, async (req, res) => {
 router.post(
   "/addsession",
   body("title", "Enter a valid title").isLength({ min: 3 }),
-  body("description", "Description must be atleast 5 characters").isLength({
-    min: 5,
+  body("subject", "Description must be atleast 1 characters").isLength({
+    min: 1,
   }),
+  body("topic", "Enter a valid title").isLength({ min: 3 }),
+  body("classenrolled", "Enter a valid title").isLength({ min: 1 }),
+  body("date", "Enter a valid title").isLength({ min: 1 }),
+  body("time", "Enter a valid title").isLength({ min: 1 }),
+  body("description", "Enter a valid title").isLength({ min: 1 }),
+  body("link", "Enter a valid title").isLength({ min: 1 }),
+  body("creator", "Enter a valid title").isLength({ min: 1 }),
+
   fetchUser,
   async (req, res) => {
     // Finds the validation errors in this request and wraps them in an object with handy functions
@@ -30,11 +38,24 @@ router.post(
       return res.status(400).json({ errors: errors.array() });
     }
     try {
-      const { title, description, tag } = req.body;
-      const session = new Session({
-        title,
+      const { creator, title,
+        subject,
+        topic,
+        classenrolled,
+        date,
+        time,
         description,
-        tag,
+        link } = req.body;
+      const session = new Session({
+        creator,
+        title,
+        subject,
+        topic,
+        classenrolled,
+        date,
+        time,
+        description,
+        link,
         user: req.user.id,
       });
       const savedSession = await session.save();
@@ -49,17 +70,44 @@ router.post(
 // ROUTE 3 : update existing session of a user: Login required
 router.put("/updatesession/:id", fetchUser, async (req, res) => {
   try {
-    const { title, description, tag } = req.body;
+    const { 
+      creator,
+      title,
+      subject,
+      topic,
+      classenrolled,
+      date,
+      time,
+      description,
+      link } = req.body;
     //create new session object
     let newsession = {};
+    if (creator) {
+      newsession.creator = creator;
+    }
     if (title) {
-        newsession.title = title;
+      newsession.title = title;
+    }
+    if (subject) {
+      newsession.subject = subject;
+    }
+    if (topic) {
+      newsession.topic = topic;
+    }
+    if (classenrolled) {
+      newsession.classenrolled = classenrolled;
+    }
+    if (date) {
+      newsession.date = date;
+    }
+    if (time) {
+      newsession.time = time;
+    }
+    if (link) {
+      newsession.link = link;
     }
     if (description) {
-        newsession.description = description;
-    }
-    if (tag) {
-        newsession.tag = tag;
+      newsession.description = description;
     }
     //find the session to be updated and then update it
     let session = await Session.findById(req.params.id);

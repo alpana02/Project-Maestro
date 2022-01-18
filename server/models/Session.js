@@ -6,7 +6,29 @@ const SessionSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref:'user'
   },
+  creator: {
+    type: String,
+  },
   title: {
+    type: String,
+    required: true,
+  },
+  subject: {
+    type: String,
+    required: true,
+  },
+  topic: {
+    type: String,
+    default: "General",
+  },
+  classenrolled: {
+    type: String,
+  },
+  date: {
+    type: String,
+    required: true,
+  },
+  time: {
     type: String,
     required: true,
   },
@@ -14,13 +36,9 @@ const SessionSchema = new Schema({
     type: String,
     required: true,
   },
-  tag: {
-    type: String,
-    default: "General",
-  },
-  date: {
-    type: Date,
-    default: Date.now,
-  },
+  link:{
+    type:String,
+    required:true,
+  }
 });
 module.exports = mongoose.model("session", SessionSchema);

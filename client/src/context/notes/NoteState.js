@@ -50,7 +50,7 @@ export default function NoteState(props) {
       },
     });
     console.log(response);
-   const newNotes = notes.filter((note) => {
+    const newNotes = notes.filter((note) => {
       return note._id !== id;
     });
     setnotes(newNotes);
@@ -103,16 +103,33 @@ export default function NoteState(props) {
     }
   };
   //add a sessions
-  const addSession = async (title, description, tag) => {
+  const addSession = async (creator, title,
+    subject,
+    topic,
+    classenrolled,
+    date,
+    time,
+    description,
+    link) => {
     try {
       //call api for creating sessions
-      const response = await fetch(`${host}/api/session/addsession`, {
+      const response = await fetch(`${host}/api/sessions/addsession`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           "auth-token": localStorage.getItem("token"),
         },
-        body: JSON.stringify({ title, description, tag }),
+        body: JSON.stringify({
+          creator,
+          title,
+          subject,
+          topic,
+          classenrolled,
+          date,
+          time,
+          description,
+          link
+        }),
       });
       const session = await response.json();
       setsessions(sessions.concat(session));
@@ -131,13 +148,20 @@ export default function NoteState(props) {
       },
     });
     console.log(response);
-   const newSessions = sessions.filter((session) => {
+    const newSessions = sessions.filter((session) => {
       return session._id !== id;
     });
     setsessions(newSessions);
   };
   //edit session
-  const editSession = async (id, title, description, tag) => {
+  const editSession = async (id, creator, title,
+    subject,
+    topic,
+    classenrolled,
+    date,
+    time,
+    description,
+    link) => {
     //call api for editing session
     const response = await fetch(`${host}/api/sessions/updatesession/${id}`, {
       method: "PUT",
@@ -145,7 +169,14 @@ export default function NoteState(props) {
         "Content-Type": "application/json",
         "auth-token": localStorage.getItem("token"),
       },
-      body: JSON.stringify({ title, description, tag }),
+      body: JSON.stringify({ creator, title,
+        subject,
+        topic,
+        classenrolled,
+        date,
+        time,
+        description,
+        link }),
     });
     const json = await response.json();
     console.log(json);
@@ -153,9 +184,15 @@ export default function NoteState(props) {
     for (let index = 0; index < newSessions.length; index++) {
       const element = newSessions[index];
       if (element._id === id) {
+        newSessions[index].creator = creator;
+        newSessions[index].subject = subject;
         newSessions[index].title = title;
+        newSessions[index].topic = topic;
+        newSessions[index].classenrolled = classenrolled;
+        newSessions[index].date = date;
+        newSessions[index].time = time;
         newSessions[index].description = description;
-        newSessions[index].tag = tag;
+        newSessions[index].link = link;
         break;
       }
     }
