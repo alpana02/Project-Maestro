@@ -79,10 +79,91 @@ export default function NoteState(props) {
       }
     }
     setnotes(newNotes);
+
+    
   };
+
+  const sessionsInitial = [];
+  const [sessions, setsessions] = useState(sessionsInitial);
+  //get all sessions
+  const getSessions = async () => {
+    try {
+      const response = await fetch(`${host}/api/sessions/fetchallsessions`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "auth-token": localStorage.getItem("token"),
+        },
+      });
+      const json = await response.json();
+      setsessions(json);
+    } catch (error) {
+      return error.message;
+    }
+  };
+  //add a sessions
+  const addSession = async (title, description, tag) => {
+    try {
+      //call api for creating sessions
+      const response = await fetch(`${host}/api/session/addsession`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "auth-token": localStorage.getItem("token"),
+        },
+        body: JSON.stringify({ title, description, tag }),
+      });
+      const session = await response.json();
+      setsessions(sessions.concat(session));
+    } catch (error) {
+      return error;
+    }
+  };
+  //delete session
+  const deleteSession = async (id) => {
+    //call api for deleting session
+    const response = await fetch(`${host}/api/sessions/deletesession/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        "auth-token": localStorage.getItem("token"),
+      },
+    });
+    console.log(response);
+   const newSessions = sessions.filter((session) => {
+      return session._id !== id;
+    });
+    setsessions(newSessions);
+  };
+  //edit session
+  const editSession = async (id, title, description, tag) => {
+    //call api for editing session
+    const response = await fetch(`${host}/api/sessions/updatesession/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        "auth-token": localStorage.getItem("token"),
+      },
+      body: JSON.stringify({ title, description, tag }),
+    });
+    const json = await response.json();
+    console.log(json);
+    let newSessions = JSON.parse(JSON.stringify(sessions));
+    for (let index = 0; index < newSessions.length; index++) {
+      const element = newSessions[index];
+      if (element._id === id) {
+        newSessions[index].title = title;
+        newSessions[index].description = description;
+        newSessions[index].tag = tag;
+        break;
+      }
+    }
+    setsessions(newSessions);
+  };
+
   return (
     <NoteContext.Provider
-      value={{ notes, setnotes, addNote, deleteNote, editNote, getNotes }}
+      value={{ notes, setnotes, addNote, deleteNote, editNote, getNotes, sessions, setsessions, addSession, deleteSession, editSession, getSessions }}
     >
       {props.children}
     </NoteContext.Provider>

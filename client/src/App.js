@@ -11,6 +11,7 @@ import Discussion from "./components/Discussion";
 import NoteState from "./context/notes/NoteState";
 import Alert from "./components/Alert";
 import StudentNotes from "./components/StudentNotes";
+import Session from "./components/Session";
 import { Login } from "./components/Login";
 import { Signup } from "./components/Signup";
 import { useState } from "react";
@@ -31,7 +32,8 @@ function App() {
     }, 1500);
   };
   return (
-    <NoteState>
+    <>
+      <NoteState>
       <Router>
         <Navbar showAlert={showAlert} />
         <Alert alert={alert} />
@@ -44,6 +46,7 @@ function App() {
             <Route exact path="/chat" element={<DirectMessaging />} />
             <Route exact path="/discussion" element={<Discussion />} />
             <Route exact path="/student_notes" element={<StudentNotes showAlert={showAlert} />} />
+            <Route exact path="/session" element={<Session showAlert={showAlert} />} />
             <Route exact path="/login" element={<Login showAlert={showAlert} />} />
             <Route exact path="/signuphome" element={<SignupHome showAlert={showAlert} />} />
             <Route exact path="/signup" element={<Signup showAlert={showAlert} />} />
@@ -52,6 +55,8 @@ function App() {
         </div>
       </Router>
     </NoteState>
+    </>
+    
 
   );
 }

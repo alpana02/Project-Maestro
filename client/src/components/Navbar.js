@@ -99,7 +99,18 @@ export default function Navbar(props) {
                     >
                       Home
                     </Link>
-                  </li><li className="nav-item">
+                  </li>
+                  <li className="nav-item">
+                    <Link
+                      className={`nav-link ${location.pathname === "/session" ? "active" : ""
+                        }`}
+                      aria-current="page"
+                      to="/session"
+                    >
+                      Create Session
+                    </Link>
+                  </li>
+                  <li className="nav-item">
                     <Link
                       className={`nav-link ${location.pathname === "/chat" ? "active" : ""
                         }`}
