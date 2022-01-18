@@ -97,6 +97,7 @@ export default function NoteState(props) {
       });
       const json = await response.json();
       setsessions(json);
+      console.log(sessions);
     } catch (error) {
       return error.message;
     }

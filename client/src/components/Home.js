@@ -1,5 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import Sessionitem from "./SessionItems";
+import sessionContext from "../context/notes/noteContext";
 import "./Home.css";
 
 export default function Home(props) {
@@ -12,6 +14,7 @@ export default function Home(props) {
     if (!localStorage.getItem("token")) {
       navigate("/login");
     }
+    getSessions();
     getAllUsers();
     // eslint-disable-next-line
   }, []);
@@ -26,6 +29,22 @@ export default function Home(props) {
     setusercards(data);
     settotalcards(data)
   }
+
+  const context = useContext(sessionContext);
+  const { sessions, getSessions, editSession } = context;
+  const [session, setsession] = useState({
+    _id: "",
+    title: "",
+    description: "",
+    tag: "",
+  });
+ 
+  const updateSession = (currentSession) => {
+    ref.current.click();
+    setsession(currentSession);
+  };
+  const ref = useRef(null);
+
   async function handleSubmit(e) {
     e.preventDefault();
     const res = totalcards.filter(
@@ -41,6 +60,19 @@ export default function Home(props) {
 
   return (
     <div>
+    <div className="col-12 mt-3">
+            <div className="row">
+            {sessions.map((session) => {
+          return (
+            <Sessionitem
+              key={session._id}
+              updateSession={updateSession}
+              session={session}
+              showAlert={props.showAlert}
+            />
+          );
+        })}
+        </div></div>
       <form onSubmit={handleSubmit}>
         <div className="conatiner mt-5">
           <div className="container">
