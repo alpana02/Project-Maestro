@@ -3,7 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 
 export default function Navbar(props) {
   const userrole = localStorage.getItem("role")
-  console.log(userrole);
+
   let location = useLocation();
   let navigate = useNavigate();
   const handleLogout = () => {
@@ -33,8 +33,8 @@ export default function Navbar(props) {
             >
               <span className="navbar-toggler-icon"></span>
             </button>
-            {(userrole==="mentee")? (
-            <div className="collapse navbar-collapse" id="navbarSupportedContent">
+            {(userrole === "mentee") ? (
+              <div className="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul className="navbar-nav me-auto mb-2 mb-lg-0 p-2">
                   <li className="nav-item">
                     <Link
@@ -85,10 +85,10 @@ export default function Navbar(props) {
                 <button className="btn btn-primary mx-1" onClick={handleLogout}>
                   logout
                 </button>
-              
-            </div>
-            ):
-            <div className="collapse navbar-collapse" id="navbarSupportedContent">
+
+              </div>
+            ) :
+              <div className="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul className="navbar-nav me-auto mb-2 mb-lg-0 p-2">
                   <li className="nav-item">
                     <Link
@@ -121,8 +121,8 @@ export default function Navbar(props) {
                 <button className="btn btn-primary mx-1" onClick={handleLogout}>
                   logout
                 </button>
-              
-            </div>}
+
+              </div>}
           </div>
         </nav>
       )}

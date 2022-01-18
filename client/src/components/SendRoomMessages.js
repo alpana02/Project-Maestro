@@ -5,7 +5,7 @@ import { Input, Button } from '@material-ui/core'
 import { useNavigate } from "react-router-dom";
 import './Discussion.css'
 
-function SendRoomMessages(scroll) {
+function SendRoomMessages({ scroll }) {
 
     // For finding the username
     let navigate = useNavigate();
@@ -25,15 +25,18 @@ function SendRoomMessages(scroll) {
 
     // For sending the messages
     const [message, setMessage] = useState('')
+
     async function sendMessage(e) {
         e.preventDefault()
         await db.collection('messages').add({
             text: message,
             name: profile.name,
+            email: profile.email,
             createdAt: firebase.firestore.FieldValue.serverTimestamp()
 
         })
         setMessage('')
+        scroll.current.scrollIntoView({ behavior: 'smooth' })
     }
 
     useEffect(() => {
@@ -43,8 +46,6 @@ function SendRoomMessages(scroll) {
         getUser()
         // eslint-disable-next-line
     }, []);
-
-
 
 
     return (
