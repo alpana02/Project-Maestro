@@ -28,6 +28,7 @@ export const Login = (props) => {
       // save tha uth and redirect
       localStorage.setItem("token", json.authToken);
       localStorage.setItem("email", json.user.email);
+      localStorage.setItem("role", json.user.role);
       navigate("/");
     } 
   };

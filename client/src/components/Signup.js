@@ -53,6 +53,7 @@ export const Signup = (props) => {
       // save tha uth and redirect
       localStorage.setItem("token", json.authToken);
       localStorage.setItem("email", json.user.email);
+      localStorage.setItem("role", json.user.role);
       navigate("/");
       props.showAlert("Account Created Succesfully", "success");
     } else {

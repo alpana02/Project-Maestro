@@ -2,6 +2,8 @@ import React from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
 export default function Navbar(props) {
+  const userrole = localStorage.getItem("role")
+  console.log(userrole);
   let location = useLocation();
   let navigate = useNavigate();
   const handleLogout = () => {
@@ -31,6 +33,7 @@ export default function Navbar(props) {
             >
               <span className="navbar-toggler-icon"></span>
             </button>
+            {(userrole==="mentee")? (
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul className="navbar-nav me-auto mb-2 mb-lg-0 p-2">
                   <li className="nav-item">
@@ -71,7 +74,43 @@ export default function Navbar(props) {
                   </li>
                   <li className="nav-item">
                     <Link
-                      className={`nav-link ${location.pathname === "/about" ? "active" : ""
+                      className={`nav-link ${location.pathname === "/aboutmentee" ? "active" : ""
+                        }`}
+                      to="/aboutmentee"
+                    >
+                      About
+                    </Link>
+                  </li>
+                </ul>
+                <button className="btn btn-primary mx-1" onClick={handleLogout}>
+                  logout
+                </button>
+              
+            </div>
+            ):
+            <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul className="navbar-nav me-auto mb-2 mb-lg-0 p-2">
+                  <li className="nav-item">
+                    <Link
+                      className={`nav-link ${location.pathname === "/homementor" ? "active" : ""
+                        }`}
+                      aria-current="page"
+                      to="/homementor"
+                    >
+                      Home
+                    </Link>
+                  </li><li className="nav-item">
+                    <Link
+                      className={`nav-link ${location.pathname === "/chat" ? "active" : ""
+                        }`}
+                      to="/chat"
+                    >
+                      Chat
+                    </Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link
+                      className={`nav-link ${location.pathname === "/aboutmentee" ? "active" : ""
                         }`}
                       to="/about"
                     >
@@ -83,7 +122,7 @@ export default function Navbar(props) {
                   logout
                 </button>
               
-            </div>
+            </div>}
           </div>
         </nav>
       )}
