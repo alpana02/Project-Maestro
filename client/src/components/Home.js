@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef, useContext } from "react";
-import { useNavigate } from "react-router-dom";
 import Sessionitem from "./SessionItems";
 import sessionContext from "../context/notes/noteContext";
+import { Link, useNavigate } from "react-router-dom";
 import "./Home.css";
 
 export default function Home(props) {
@@ -128,7 +128,7 @@ export default function Home(props) {
               {usercards.map((usercards, index) => (
                 
                 <div className="col-xl-3 col-md-6 mb-xl-5 mb-7 mb-sm-6 mb-md-6 mb-lg-6 d-flex">
-                  {console.log(usercards.img.data)}
+                 
                   <div className="card" style={{ width: "18rem" }}>
                     <img
                       width="500"
@@ -157,10 +157,9 @@ export default function Home(props) {
                       <p className="card-text" style={{ fontSize: "14px" }}>
                         <b>Years of experience : </b> {usercards.experience}
                       </p>
-
-                      <a href="/" className="btn btn-primary">
+                      <Link to={`/viewProfile/${usercards._id}`} className="btn btn-primary">
                         View Profile
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </div>

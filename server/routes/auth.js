@@ -68,6 +68,7 @@ router.post("/signup", upload.single("img"), async (req, res) => {
         contentType: "image/png",
       },
       subject: req.body.subject,
+      notification:[]
     });
     console.log(req.file);
     console.log(req.file.filename);
@@ -142,11 +143,23 @@ router.get("/getUser", fetchUser, async (req, res) => {
     res.status(500).send("Oops internal server error occured");
   }
 });
-
+// ROUTE34: Get  details of all mentors
 router.get("/getAllusers", fetchUser, async (req, res) => {
   try {
     const data = await User.find({ role: "mentor" });
     res.send(data);
+  } catch (error) {
+    console.log(error.message);
+    res.status(500).send("Oops internal server error occured");
+  }
+});
+
+// ROUTE5: Get particular user details: login required
+router.get("/getDetails/:id", fetchUser, async (req, res) => {
+  try {
+    const id = req.params.id;
+    const user = await User.findById(id);
+    res.send(user);
   } catch (error) {
     console.log(error.message);
     res.status(500).send("Oops internal server error occured");

@@ -2,15 +2,14 @@ import React from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
 export default function Navbar(props) {
-  const userrole = localStorage.getItem("role")
+  const userrole = localStorage.getItem("role");
 
   let location = useLocation();
   let navigate = useNavigate();
   const handleLogout = () => {
     localStorage.removeItem("token");
     navigate("/login");
-    props.showAlert("Logged Out!!", "primary")
-
+    props.showAlert("Logged Out!!", "primary");
   };
   return (
     <>
@@ -33,22 +32,28 @@ export default function Navbar(props) {
             >
               <span className="navbar-toggler-icon"></span>
             </button>
-            {(userrole === "mentee") ? (
-              <div className="collapse navbar-collapse" id="navbarSupportedContent">
+            {userrole === "mentee" ? (
+              <div
+                className="collapse navbar-collapse"
+                id="navbarSupportedContent"
+              >
                 <ul className="navbar-nav me-auto mb-2 mb-lg-0 p-2">
                   <li className="nav-item">
                     <Link
-                      className={`nav-link ${location.pathname === "/" ? "active" : ""
-                        }`}
+                      className={`nav-link ${
+                        location.pathname === "/" ? "active" : ""
+                      }`}
                       aria-current="page"
                       to="/"
                     >
                       Home
                     </Link>
-                  </li><li className="nav-item">
+                  </li>
+                  <li className="nav-item">
                     <Link
-                      className={`nav-link ${location.pathname === "/chat" ? "active" : ""
-                        }`}
+                      className={`nav-link ${
+                        location.pathname === "/chat" ? "active" : ""
+                      }`}
                       to="/chat"
                     >
                       Chat
@@ -56,8 +61,9 @@ export default function Navbar(props) {
                   </li>
                   <li className="nav-item">
                     <Link
-                      className={`nav-link ${location.pathname === "/discussion" ? "active" : ""
-                        }`}
+                      className={`nav-link ${
+                        location.pathname === "/discussion" ? "active" : ""
+                      }`}
                       to="/discussion"
                     >
                       Discussion Forum
@@ -65,8 +71,9 @@ export default function Navbar(props) {
                   </li>
                   <li className="nav-item">
                     <Link
-                      className={`nav-link ${location.pathname === "/student_notes" ? "active" : ""
-                        }`}
+                      className={`nav-link ${
+                        location.pathname === "/student_notes" ? "active" : ""
+                      }`}
                       to="/student_notes"
                     >
                       Notes
@@ -74,8 +81,9 @@ export default function Navbar(props) {
                   </li>
                   <li className="nav-item">
                     <Link
-                      className={`nav-link ${location.pathname === "/aboutmentee" ? "active" : ""
-                        }`}
+                      className={`nav-link ${
+                        location.pathname === "/aboutmentee" ? "active" : ""
+                      }`}
                       to="/aboutmentee"
                     >
                       About
@@ -85,15 +93,18 @@ export default function Navbar(props) {
                 <button className="btn btn-primary mx-1" onClick={handleLogout}>
                   logout
                 </button>
-
               </div>
-            ) :
-              <div className="collapse navbar-collapse" id="navbarSupportedContent">
+            ) : (
+              <div
+                className="collapse navbar-collapse"
+                id="navbarSupportedContent"
+              >
                 <ul className="navbar-nav me-auto mb-2 mb-lg-0 p-2">
                   <li className="nav-item">
                     <Link
-                      className={`nav-link ${location.pathname === "/homementor" ? "active" : ""
-                        }`}
+                      className={`nav-link ${
+                        location.pathname === "/homementor" ? "active" : ""
+                      }`}
                       aria-current="page"
                       to="/homementor"
                     >
@@ -112,8 +123,9 @@ export default function Navbar(props) {
                   </li>
                   <li className="nav-item">
                     <Link
-                      className={`nav-link ${location.pathname === "/chat" ? "active" : ""
-                        }`}
+                      className={`nav-link ${
+                        location.pathname === "/chat" ? "active" : ""
+                      }`}
                       to="/chat"
                     >
                       Chat
@@ -121,19 +133,30 @@ export default function Navbar(props) {
                   </li>
                   <li className="nav-item">
                     <Link
-                      className={`nav-link ${location.pathname === "/aboutmentee" ? "active" : ""
-                        }`}
+                      className={`nav-link ${
+                        location.pathname === "/aboutmentee" ? "active" : ""
+                      }`}
                       to="/about"
                     >
                       About
+                    </Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link
+                      className={`nav-link ${
+                        location.pathname === "/notify" ? "active" : ""
+                      }`}
+                      to="/notify"
+                    >
+                      Notifications
                     </Link>
                   </li>
                 </ul>
                 <button className="btn btn-primary mx-1" onClick={handleLogout}>
                   logout
                 </button>
-
-              </div>}
+              </div>
+            )}
           </div>
         </nav>
       )}

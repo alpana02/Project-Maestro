@@ -18,6 +18,8 @@ import { useState } from "react";
 import SignupHome from "./components/SignupHome";
 import { SignupMentee } from "./components/SignupMentee";
 import DirectMessaging from './components/DirectMessaging';
+import ViewProfile from "./components/ViewProfile";
+import NotificationMentor from "./components/NotificationMentor";
 
 
 function App() {
@@ -29,7 +31,7 @@ function App() {
     });
     setTimeout(() => {
       setAlert(null);
-    }, 1500);
+    }, 3000);
   };
   return (
     <>
@@ -51,6 +53,9 @@ function App() {
             <Route exact path="/signuphome" element={<SignupHome showAlert={showAlert} />} />
             <Route exact path="/signup" element={<Signup showAlert={showAlert} />} />
             <Route exact path="/signupmentee" element={<SignupMentee showAlert={showAlert} />} />
+            <Route exact path="/viewProfile/:id" element={<ViewProfile showAlert={showAlert} />} />
+            <Route exact path="/notify" element={<NotificationMentor showAlert={showAlert} />} />
+
           </Routes>
         </div>
       </Router>

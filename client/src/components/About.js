@@ -1,10 +1,26 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import './About.css'
+import { Calendar, dateFnsLocalizer } from "react-big-calendar";
+import "react-big-calendar/lib/css/react-big-calendar.css";
+import format from "date-fns/format";
+import getDay from "date-fns/getDay";
+import parse from "date-fns/parse";
+import startOfWeek from "date-fns/startOfWeek";
 
 export default function About(props) {
   let navigate = useNavigate();
-  const [profile, setProfile] = useState([])
+  const [profile, setProfile] = useState([]);
+  const [allEvents, setAllEvents] = useState([]);
+  const locales = {
+    "en-US": require("date-fns/locale/en-US"),
+  };
+  const localizer = dateFnsLocalizer({
+    format,
+    parse,
+    startOfWeek,
+    getDay,
+    locales,
+  });
 
   useEffect(() => {
     if (!localStorage.getItem("token")) {
@@ -22,15 +38,26 @@ export default function About(props) {
       headers: {
         "auth-token": localStorage.getItem("token"),
       },
-
-    })
+    });
     const data = await response.json();
     setProfile(data);
-  };
+    const response2 = await fetch(
+      `http://localhost:5000/api/calendar/fetchmyEvents`,
+      {
+        method: "GET",
+        headers: {
+          "auth-token": localStorage.getItem("token"),
+        },
+      }
+    );
+    const events = await response2.json();
+    setAllEvents(events);
+  }
 
 
-  return <div>
-  
+  return
+  (
+  <>
     <div className="container rounded bg-white">
       <div class="container">
         <div class="row">
@@ -66,16 +93,49 @@ export default function About(props) {
             <div className="row mt-2">
               <div className="col-md-12"><label className="labels">Name</label><p>{profile.name}</p> </div>
             </div>
-            <div className="row mt-3">
-              <div className="col-md-12"><label className="labels">Email</label><p>{profile.email}</p> </div>
-              <div className="col-md-12"><label className="labels">Class</label><p>{profile.classsp}</p> </div>
-              <div className="col-md-12"><label className="labels">Role</label><p>{profile.role}</p> </div>
+          </div>
+          <div className="col-md-5 border-right">
+            <div className="p-3 py-5">
+              <div className="d-flex justify-content-between align-items-center mb-3">
+                <h4 className="text-right">Profile Settings</h4>
+              </div>
+              <div className="row mt-2">
+                <div className="col-md-12">
+                  <label className="labels">Name</label>
+                  <p>{profile.name}</p>
+                </div>
+              </div>
+              <div className="row mt-3">
+                <div className="col-md-12">
+                  <label className="labels">Email</label>
+                  <p>{profile.email}</p>
+                </div>
+                <div className="col-md-12">
+                  <label className="labels">Class</label>
+                  <p>{profile.classsp}</p>
+                </div>
+                <div className="col-md-12">
+                  <label className="labels">Role: </label>
+                  <p>{profile.role}</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
+      <div className="container">
+      <div className="d-flex justify-content-between align-items-center mb-3 ml-3">
+        <h4 className="text-right">Your Accepted Bookings</h4>
+      </div>
+      <Calendar
+        localizer={localizer}
+        events={allEvents}
+        startAccessor="start"
+        endAccessor="end"
+        style={{ height: 500, margin: "50px" }}
+      />
     </div>
-  </div>;
+    </div>
+    </>
+  );
 }
-
-
