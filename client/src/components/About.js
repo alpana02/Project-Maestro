@@ -30,14 +30,33 @@ export default function About(props) {
 
 
   return <div>
+  
     <div className="container rounded bg-white">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-5"><img className="mt-5" width="450px" style={{ borderRadius: "25px" }}
+            src="./img1.jpeg"
+            alt="This is" /></div>
+          <div class="col-sm-7" >
+            <h5 className="mt-5">Welcome to your profile</h5>
+            <h2>{profile.name}</h2>
+            <h5
+              className="card-text"
+              style={{ fontSize: "14px", marginBottom: "0.3rem" }}
+            >
+              <b>{profile.work}</b> at <b>{profile.company}</b>
+            </h5>
+          </div>
+        </div>
+      </div>
       <div className="row">
         <div className="col-md-3 border-right">
           <div className="d-flex flex-column align-items-center text-center p-4 py-5">
             <img className="rounded-circle mt-5" width="150px"
-              src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"
+              src="./img1.jpeg"
               alt="This is" /><span className="font-weight-bold">
-              {profile.name}</span><span className="text-black-50">{profile.email}</span><span> </span></div>
+              {profile.name}</span><span className="text-black-50">{profile.email}</span><span> </span>
+          </div>
         </div>
         <div className="col-md-5 border-right">
           <div className="p-3 py-5">

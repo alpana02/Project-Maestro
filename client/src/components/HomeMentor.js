@@ -59,63 +59,8 @@ export default function Home(props) {
 
   return (
     <div>
-    {sessions.map((session) => {
-          return (
-            <Sessionitem
-              key={session._id}
-              updateSession={updateSession}
-              session={session}
-              showAlert={props.showAlert}
-            />
-          );
-        })}
-      <form onSubmit={handleSubmit}>
-        <div className="conatiner mt-5">
-          <div className="container">
-            <div className="row">
-              <h4>Filter</h4>
-              <div className="col-3">
-                <select
-                  className="form-select"
-                  name="class"
-                  onChange={onChange}
-                  aria-label="Default select example"
-                >
-                  <option selected>Select Class</option>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                  <option value="6">6</option>
-                  <option value="7">7</option>
-                  <option value="8">8</option>
-                  <option value="9">9</option>
-                  <option value="10">10</option>
-                </select>
-              </div>
-              <div className="col-3">
-                <select
-                  className="form-select"
-                  name="subject"
-                  onChange={onChange}
-                  aria-label="Default select example"
-                >
-                  <option selected>Select Subject</option>
-                  <option value="math">Math</option>
-                  <option value="science">Science</option>
-                  <option value="english">English</option>
-                </select>
-              </div>
-              <div className="col-3">
-                <button type="submit" class="btn btn-primary">
-                  Submit
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </form>
+    
+      
     </div>
   );
 }

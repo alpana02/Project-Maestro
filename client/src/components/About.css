@@ -1,40 +1,26 @@
-.form-control:focus {
-    box-shadow: none;
-    border-color: #BA68C8
+body {
+    font-family: 'Lato', sans-serif
 }
 
-.profile-button {
-    background: rgb(99, 39, 120);
-    box-shadow: none;
-    border: none
+
+label {
+    color: #333
 }
 
-.profile-button:hover {
-    background: #682773
+.btn-send {
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    width: 80%;
+    margin-left: 3px
 }
 
-.profile-button:focus {
-    background: #682773;
-    box-shadow: none
+.help-block.with-errors {
+    color: #ff5050;
+    margin-top: 5px
 }
 
-.profile-button:active {
-    background: #682773;
-    box-shadow: none
-}
-
-.back:hover {
-    color: #682773;
-    cursor: pointer
-}
-
-.labels {
-    font-size: 11px
-}
-
-.add-experience:hover {
-    background: #BA68C8;
-    color: #fff;
-    cursor: pointer;
-    border: solid 1px #BA68C8
+.card {
+    margin-left: 10px;
+    margin-right: 10px
 }
