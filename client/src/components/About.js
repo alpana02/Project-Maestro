@@ -55,8 +55,7 @@ export default function About(props) {
   }
 
 
-  return
-  (
+  return(
   <>
     <div className="container rounded bg-white">
       <div class="container">

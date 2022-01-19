@@ -18,7 +18,7 @@ export default function Navbar(props) {
       ) : (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
           <div className="container-fluid">
-            <Link className="navbar-brand" to="/">
+            <Link className="navbar-brand" to={userrole === "mentee" ?"/":"/about"}>
               Maestro
             </Link>
             <button
@@ -100,17 +100,6 @@ export default function Navbar(props) {
                 id="navbarSupportedContent"
               >
                 <ul className="navbar-nav me-auto mb-2 mb-lg-0 p-2">
-                  <li className="nav-item">
-                    <Link
-                      className={`nav-link ${
-                        location.pathname === "/homementor" ? "active" : ""
-                      }`}
-                      aria-current="page"
-                      to="/homementor"
-                    >
-                      Home
-                    </Link>
-                  </li>
                   <li className="nav-item">
                     <Link
                       className={`nav-link ${location.pathname === "/session" ? "active" : ""

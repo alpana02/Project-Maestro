@@ -3,7 +3,6 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
-import HomeMentor from "./components/HomeMentor";
 import About from "./components/About";
 import AboutMentee from "./components/AboutMentee";
 //import Chat from "./components/Chat";
@@ -42,7 +41,6 @@ function App() {
         <div className="container">
           <Routes>
             <Route exact path="/" element={<Home showAlert={showAlert} />} />
-            <Route exact path="/homementor" element={<HomeMentor showAlert={showAlert} />} />
             <Route exact path="/about" element={<About />} />
             <Route exact path="/aboutmentee" element={<AboutMentee />} />
             <Route exact path="/chat" element={<DirectMessaging />} />

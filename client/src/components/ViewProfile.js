@@ -62,26 +62,7 @@ export default function ViewProfile(props) {
     setAllEvents(events);
   }
 
-  // calendar
-  // const events = [
-  //   {
-  //     title: "Big Meeting",
-  //     allDay: true,
-  //     start: new Date(2022, 0, 18,10,11,0),
-  //     end: new Date(2022, 0, 18,11,12,0),
-  //   },
-  //   {
-  //     title: "Vacation",
-  //     start: new Date(2022, 0, 10),
-  //     end: new Date(2022, 0, 10),
-  //   },
-  //   {
-  //     title: "Conference",
-  //     start: new Date(2022, 0, 20),
-  //     end: new Date(2022, 0, 23),
-  //   },
-  // ];
-  // const events = [{}];
+  
 
   async function handleAddEvent() {
     try {
@@ -101,8 +82,7 @@ export default function ViewProfile(props) {
           body: JSON.stringify({ title, start, end, createdBy }),
         }
       );
-      const event = await response.json({ title, start, end, createdBy });
-      // setAllEvents([...allEvents, event]);
+      await response.json({ title, start, end, createdBy });
       setNewEvent({ title: "", start: "", end: "" });
       props.showAlert(
         "Event Request Has been Sent to the Mentor Succesfully",

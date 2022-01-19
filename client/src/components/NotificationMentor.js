@@ -49,7 +49,7 @@ export default function NotificationMentor(props) {
         "success"
       );
       //call api for deleting event
-      const response2 = await fetch(
+      await fetch(
         `http://localhost:5000/api/calendar/deleteevent/${notiId}`,
         {
           method: "DELETE",
@@ -59,7 +59,7 @@ export default function NotificationMentor(props) {
           },
         }
       );
-      console.log(response2);
+      
       const newNoti = profile.filter((notify) => {
         return notify._id !== notiId;
       });
@@ -71,7 +71,7 @@ export default function NotificationMentor(props) {
 
   async function handleReject(notiId){
       try {
-        const response2 = await fetch(
+        await fetch(
             `http://localhost:5000/api/calendar/deleteevent/${notiId}`,
             {
               method: "DELETE",
@@ -81,7 +81,7 @@ export default function NotificationMentor(props) {
               },
             }
           );
-          console.log(response2);
+          
           const newNoti = profile.filter((notify) => {
             return notify._id !== notiId;
           });
@@ -97,12 +97,14 @@ export default function NotificationMentor(props) {
   }
 
   return (
-    <div className="container mt-3">
+    <div className="container">
       {
-        <div className="col-12 mt-3">
+        <div className="col-12 mt-5">
+        <h2>Booking Requests to you</h2>
           <div className="row">
+          <h4 className="mt-3">{profile.length === 0 && "No Booking Requests Yet"}</h4>  
             {profile.map((profile, index) => (
-              <div className="col-6 col-md-6 mb-xl-5 mb-7 mb-sm-6 mb-md-6 mb-lg-6 d-flex">
+              <div className="col-4 mb-xl-5 mb-7 mb-sm-6 mb-md-6 mb-lg-6 d-flex">
                 <div className="card" style={{ width: "18rem" }}>
                   <div className="card-body">
                     <h5 className="card-title">{profile.title}</h5>
@@ -110,13 +112,13 @@ export default function NotificationMentor(props) {
                       className="card-text"
                       style={{ fontSize: "14px", marginBottom: "0.3rem" }}
                     >
-                      <b>Start Date :</b> {profile.start}
+                      <b>Start Date :</b> {profile.start.substring(0, 10)}
                     </p>
                     <p
                       className="card-text"
                       style={{ fontSize: "14px", marginBottom: "0.3rem" }}
                     >
-                      <b>End Date :</b> {profile.end}
+                      <b>End Date :</b> {profile.end.substring(0, 10)}
                     </p>
                     <p
                       className="card-text"
