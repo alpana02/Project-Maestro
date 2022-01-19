@@ -18,6 +18,7 @@ import { SignupMentee } from "./components/SignupMentee";
 import DirectMessaging from './components/DirectMessaging';
 import ViewProfile from "./components/ViewProfile";
 import NotificationMentor from "./components/NotificationMentor";
+import Books from "./components/Books"
 
 
 function App() {
@@ -52,7 +53,7 @@ function App() {
             <Route exact path="/signupmentee" element={<SignupMentee showAlert={showAlert} />} />
             <Route exact path="/viewProfile/:id" element={<ViewProfile showAlert={showAlert} />} />
             <Route exact path="/notify" element={<NotificationMentor showAlert={showAlert} />} />
-
+            <Route exact path="/books" element={<Books showAlert={showAlert} />} />
           </Routes>
         </div>
       </Router>
