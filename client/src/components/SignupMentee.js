@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import axios from 'axios'
-
+import axios from "axios";
 
 export const SignupMentee = (props) => {
   let navigate = useNavigate();
+  const [image, setImage] = useState("");
 
   const [credentials, setcredentials] = useState({
     name: "",
@@ -12,11 +12,11 @@ export const SignupMentee = (props) => {
     password: "",
     classsp: "",
     role: "mentee",
-    interest: "",
     work: "",
     company: "",
     experience: "",
     img: "",
+    subject: "",
   });
 
   const onChange = (e) => {
@@ -24,27 +24,61 @@ export const SignupMentee = (props) => {
   };
 
   const onPhoto = (e) => {
-    setcredentials({ ...credentials, img: e.target.files[0] });
+    setImage(e.target.files[0]);
   };
 
+  async function uploadImage() {
+    const data = new FormData();
+    data.append("file", image);
+    data.append("upload_preset", "jqywmvza");
+    data.append("cloud_name", "rapidhack");
+    data.append("API_KEY", "247546958156261");
+
+    const resp = await fetch(
+      "  https://api.cloudinary.com/v1_1/rapidhack/image/upload",
+      {
+        method: "post",
+        body: data,
+      }
+    );
+    const respoJSON = await resp.json();
+    setcredentials({ ...credentials, img: respoJSON.url });
+    console.log(credentials.img);
+  }
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const formData = new FormData();
-    formData.append("name", credentials.name);
-    formData.append("email", credentials.email);
-    formData.append("password", credentials.password);
-    formData.append("classsp", credentials.classsp);
-    formData.append("role", credentials.role);
-    formData.append("interest", credentials.interest);
-    formData.append("work", credentials.work);
-    formData.append("company", credentials.company);
-    formData.append("experience", credentials.experience);
-    formData.append("img", credentials.img);
-    const response = await axios.post(
-      "http://localhost:5000/api/auth/signup",
-      formData
-    );
-    const json = response.data;
+    const {
+      name,
+      email,
+      password,
+      classsp,
+      role,
+      work,
+      company,
+      experience,
+      img,
+      subject,
+    } = credentials;
+
+    const response = await fetch(`http://localhost:5000/api/auth/signup`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name,
+        email,
+        password,
+        classsp,
+        role,
+        work,
+        company,
+        experience,
+        img,
+        subject,
+      }),
+    });
+    const json = await response.json();
     if (json.success) {
       // save tha uth and redirect
       localStorage.setItem("token", json.authToken);
@@ -135,7 +169,7 @@ export const SignupMentee = (props) => {
                             className="form-label"
                             style={{ fontSize: "14px" }}
                           >
-                            Class 
+                            Class
                           </label>
                           <input
                             type="number"
@@ -146,7 +180,7 @@ export const SignupMentee = (props) => {
                             onChange={onChange}
                           />
                         </div>
-           
+
                         <div className="mb-1">
                           <label
                             htmlFor="img"
@@ -162,7 +196,26 @@ export const SignupMentee = (props) => {
                             id="img"
                             onChange={onPhoto}
                           />
+                          <button
+                            type="button"
+                            className="btn btn-success mt-2"
+                            onClick={uploadImage}
+                          >
+                            Upload Image
+                          </button>
                         </div>
+
+                        {credentials.img ? (
+                          <img
+                            src={credentials.img}
+                            alt="imageupload"
+                            width={"300px"}
+                            className="mt-3"
+                          />
+                        ) : (
+                          <div></div>
+                        )}
+
                         <div className="text-center mt-4 mb-3 pb-1">
                           <button type="submit" className="btn btn-primary">
                             Submit

@@ -5,9 +5,10 @@ const Calendar = require("../models/Calendar");
 const User = require("../models/User");
 const Notification = require("../models/Notification");
 
-// ROUTE 1 : Add a new event: Login required
+// ROUTE 1 : Add a new event when mentor accepts: Login required
 router.post("/addevent", fetchUser, async (req, res) => {
   try {
+    const user = await User.findById(req.user.id)
     const { title, start, end, createdBy, notiId } = req.body;
     const event = new Calendar({
       title,
@@ -16,6 +17,7 @@ router.post("/addevent", fetchUser, async (req, res) => {
       createdBy,
       user: req.user.id,
       notify: notiId,
+      mentor: user.name
     });
     const savedEvent = await event.save();
     res.json(savedEvent);
@@ -92,5 +94,15 @@ router.get("/fetchmyEvents", fetchUser, async (req, res) => {
     res.status(500).send("Oops internal server error occured");
   }
 });
-
+// ROUTE 8 : get all events of an exisitng mentee: Login required
+router.get("/fetchmenteeBooking", fetchUser, async (req, res) => {
+  try {
+    const user = await User.findById(req.user.id)
+    const events = await Calendar.find({ createdBy: user.email });
+    res.json(events);
+  } catch (error) {
+    console.log(error.message);
+    res.status(500).send("Oops internal server error occured");
+  }
+});
 module.exports = router;

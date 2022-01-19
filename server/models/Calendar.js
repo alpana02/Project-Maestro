@@ -4,11 +4,11 @@ const { Schema } = mongoose;
 const CalendarSchema = new Schema({
   user: {
     type: Schema.Types.ObjectId,
-    ref:'user'
+    ref: "user",
   },
   notify: {
     type: Schema.Types.ObjectId,
-    ref:'notification'
+    ref: "notification",
   },
   title: {
     type: String,
@@ -23,6 +23,10 @@ const CalendarSchema = new Schema({
     required: true,
   },
   createdBy: {
+    type: String,
+    required: true,
+  },
+  mentor: {
     type: String,
     required: true,
   },

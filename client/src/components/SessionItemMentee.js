@@ -1,9 +1,10 @@
-import React, { useContext, useState } from "react";
+import React from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Sessionitem(props) {
   let { session } = props;
-  
-  async function enrolledSession(sessionid){
+  let navigate = useNavigate();
+  async function enrolledSession(title,description,date,time,creator,link){
     try {
       const response = await fetch(
           `http://localhost:5000/api/sessions/enrollsession`,
@@ -13,14 +14,15 @@ export default function Sessionitem(props) {
               "Content-Type": "application/json",
               "auth-token": localStorage.getItem("token"),
             },
-            body: JSON.stringify({ sessionid }),
+            body: JSON.stringify({ title,description,date,time,creator,link }),
           }
         );
-        await response.json({ sessionid });
+        await response.json();
         props.showAlert(
           "Session Enrolled Succesfully",
           "success"
         );
+        navigate("/aboutmentee");
         
     } catch (error) {
       return error;
@@ -43,7 +45,7 @@ export default function Sessionitem(props) {
           <p className="card-text">{session.time}</p>
           <p className="card-text">{session.description}</p>
           <button className="btn btn-primary" onClick= {()=>{
-            enrolledSession(session._id)
+            enrolledSession(session.title,session.description,session.date,session.time,session.creator,session.link)
           }} >Enroll in session</button>
         </div>
       </div>

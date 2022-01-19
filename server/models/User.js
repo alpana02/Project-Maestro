@@ -31,18 +31,21 @@ const UserSchema = new Schema({
     type: String,
   },
   img: {
-    data: Buffer,
-    contentType: String,
+    type: String,
   },
   subject: {
-    type: String
+    type: String,
   },
   session: [
-      {
-        type: Schema.Types.ObjectId,
-        ref:'session'
-      }
-    ]
+    {
+      title: String,
+      description: String,
+      date: String,
+      time: String,
+      creator: String,
+      link:String
+    },
+  ],
 });
 const User = new mongoose.model("user", UserSchema);
 User.createIndexes();

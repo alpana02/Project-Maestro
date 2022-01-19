@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const fetchUser = require("../middleware/fetchUser");
 const Session = require("../models/Session");
-const User = require("../models/User")
+const User = require("../models/User");
 const { body, validationResult } = require("express-validator");
 
 // ROUTE 1 : get all session of an exisitng user: Login required
@@ -39,14 +39,17 @@ router.post(
       return res.status(400).json({ errors: errors.array() });
     }
     try {
-      const { creator, title,
+      const {
+        creator,
+        title,
         subject,
         topic,
         classenrolled,
         date,
         time,
         description,
-        link } = req.body;
+        link,
+      } = req.body;
       const session = new Session({
         creator,
         title,
@@ -71,7 +74,7 @@ router.post(
 // ROUTE 3 : update existing session of a user: Login required
 router.put("/updatesession/:id", fetchUser, async (req, res) => {
   try {
-    const { 
+    const {
       creator,
       title,
       subject,
@@ -80,7 +83,8 @@ router.put("/updatesession/:id", fetchUser, async (req, res) => {
       date,
       time,
       description,
-      link } = req.body;
+      link,
+    } = req.body;
     //create new session object
     let newsession = {};
     if (creator) {
@@ -143,7 +147,7 @@ router.delete("/deletesession/:id", fetchUser, async (req, res) => {
       return res.status(401).send("Permission not granted");
     }
     session = await Session.findByIdAndDelete(req.params.id);
-    res.send('Success!! Session deleted succesfully')
+    res.send("Success!! Session deleted succesfully");
   } catch (error) {
     console.log(error.message);
     res.status(500).send("Oops internal server error occured");
@@ -151,28 +155,41 @@ router.delete("/deletesession/:id", fetchUser, async (req, res) => {
 });
 
 // ROUTE 5 : enroll sessions
-router.post(
-  "/enrollsession",
-  fetchUser,
-  async (req, res) => {
-    try {
-      let user = await User.findById(req.user.id);
-      const {sessionid} = req.body;
-      await user.session.push(sessionid);
-      const saveuser = await user.save();
-      res.json(saveuser);
-    } catch (error) {
-      console.log(error.message);
-      res.status(500).send("Oops internal server error occured");
-    }
+router.post("/enrollsession", fetchUser, async (req, res) => {
+  try {
+    let user = await User.findById(req.user.id);
+    const { title, description, date, time, creator,link } = req.body;
+    await user.session.push({
+      title,
+      description,
+      date,
+      time,
+      creator,
+      link
+    });
+    const saveuser = await user.save();
+    res.json(saveuser);
+  } catch (error) {
+    console.log(error.message);
+    res.status(500).send("Oops internal server error occured");
   }
-);
+});
 
 // ROUTE 5 : fetch all sessions
 router.get("/enrolledsessions", fetchUser, async (req, res) => {
   try {
     const session = await Session.find({ user: req.user.id });
     res.json(session);
+  } catch (error) {
+    console.log(error.message);
+    res.status(500).send("Oops internal server error occured");
+  }
+});
+// ROUTE 6 : get all sessions of an exisitng mentee: Login required
+router.get("/fetchmenteeSesion", fetchUser, async (req, res) => {
+  try {
+    const user = await User.findById(req.user.id);
+    res.json(user.session);
   } catch (error) {
     console.log(error.message);
     res.status(500).send("Oops internal server error occured");

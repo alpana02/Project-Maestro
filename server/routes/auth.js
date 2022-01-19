@@ -12,30 +12,30 @@ const fs = require("fs");
 
 const JWT_SECRET = "secretkeyforsession";
 
-//defining the local storage location so that the files received from the client will be saved in the defined location.
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, "uploads");
-  },
-  filename: (req, file, cb) => {
-    cb(null, "img" + "_" + Date.now() + path.extname(file.originalname));
-  },
-});
+// //defining the local storage location so that the files received from the client will be saved in the defined location.
+// const storage = multer.diskStorage({
+//   destination: (req, file, cb) => {
+//     cb(null, "uploads");
+//   },
+//   filename: (req, file, cb) => {
+//     cb(null, "img" + "_" + Date.now() + path.extname(file.originalname));
+//   },
+// });
 
-const fileFilter = (req, file, cb) => {
-  const allowedFileTypes = ["image/jpeg", "image/jpg", "image/png"];
-  if (allowedFileTypes.includes(file.mimetype)) {
-    cb(null, true);
-  } else {
-    cb(null, false);
-  }
-};
+// const fileFilter = (req, file, cb) => {
+//   const allowedFileTypes = ["image/jpeg", "image/jpg", "image/png"];
+//   if (allowedFileTypes.includes(file.mimetype)) {
+//     cb(null, true);
+//   } else {
+//     cb(null, false);
+//   }
+// };
 
-let upload = multer({ storage, fileFilter });
+// let upload = multer({ storage, fileFilter });
 
 // AUTH ROUTES :
 // Route1: signup
-router.post("/signup", upload.single("img"), async (req, res) => {
+router.post("/signup", async (req, res) => {
   let success = false;
   try {
     //check whteher user with this email exists
@@ -46,11 +46,10 @@ router.post("/signup", upload.single("img"), async (req, res) => {
         error: "Please give unique email value,  as email already registered",
       });
     }
-
     //hash password
     var salt = await bcrypt.genSalt(10);
+    console.log(req.body.password);
     var secPass = await bcrypt.hash(req.body.password, salt);
-
     //if no user exists, then create new user
     user = await User.create({
       name: req.body.name,
@@ -61,17 +60,9 @@ router.post("/signup", upload.single("img"), async (req, res) => {
       work: req.body.work,
       company: req.body.company,
       experience: req.body.experience,
-      img: {
-        data: fs.readFileSync(
-          path.join(__dirname, `../uploads/${req.file.filename}`)
-        ),
-        contentType: "image/png",
-      },
+      img: req.body.img,
       subject: req.body.subject,
-      notification:[]
     });
-    console.log(req.file);
-    console.log(req.file.filename);
     const data = {
       session: {
         id: user.id,
@@ -81,7 +72,7 @@ router.post("/signup", upload.single("img"), async (req, res) => {
     success = true;
     res.json({ success, authToken, user });
   } catch (error) {
-    console.log(error.message);
+    console.log(error);
     res.status(500).send({
       success,
       error: error.message,
