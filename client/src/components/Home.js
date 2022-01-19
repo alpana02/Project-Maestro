@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef, useContext } from "react";
-import Sessionitem from "./SessionItems";
+import SessionitemMentee from "./SessionItemMentee";
 import sessionContext from "../context/notes/noteContext";
 import { Link, useNavigate } from "react-router-dom";
 import "./Home.css";
@@ -31,7 +31,7 @@ export default function Home(props) {
   }
 
   const context = useContext(sessionContext);
-  const { sessions, getSessions, editSession } = context;
+  const { sessions, getSessions } = context;
   const [session, setsession] = useState({
     _id: "",
     title: "",
@@ -64,7 +64,7 @@ export default function Home(props) {
             <div className="row">
             {sessions.map((session) => {
           return (
-            <Sessionitem
+            <SessionitemMentee
               key={session._id}
               updateSession={updateSession}
               session={session}

@@ -5,7 +5,6 @@ import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import About from "./components/About";
 import AboutMentee from "./components/AboutMentee";
-//import Chat from "./components/Chat";
 import Discussion from "./components/Discussion";
 import NoteState from "./context/notes/NoteState";
 import Alert from "./components/Alert";

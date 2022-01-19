@@ -54,7 +54,7 @@ export const AddSession = (props) => {
             <div class="card mt-2 mx-auto p-4 bg-light">
               <div class="card-body bg-light">
                 <div class="container">
-                  <form id="contact-form" role="form" form onSubmit={handleClick}>
+                  <form id="contact-form" form onSubmit={handleClick}>
                     <div class="controls">
                       <div class="row">
                         <div class="col-md-6">
