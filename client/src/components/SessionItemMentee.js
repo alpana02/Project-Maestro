@@ -1,9 +1,32 @@
-import React, { useContext } from "react";
-import sessionContext from "../context/notes/noteContext";
+import React, { useContext, useState } from "react";
 
 export default function Sessionitem(props) {
-  const context = useContext(sessionContext);
   let { session } = props;
+  
+  async function enrolledSession(sessionid){
+    try {
+      const response = await fetch(
+          `http://localhost:5000/api/sessions/enrollsession`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "auth-token": localStorage.getItem("token"),
+            },
+            body: JSON.stringify({ sessionid }),
+          }
+        );
+        await response.json({ sessionid });
+        props.showAlert(
+          "Session Enrolled Succesfully",
+          "success"
+        );
+        
+    } catch (error) {
+      return error;
+    }
+}
+
   return (
     <div className="col-md-3">
       <div className="card my-3">
@@ -19,8 +42,9 @@ export default function Sessionitem(props) {
           <p className="card-text">{session.date}</p>
           <p className="card-text">{session.time}</p>
           <p className="card-text">{session.description}</p>
-          <p className="card-text">{session.link}</p>
-          <button className="btn btn-primary">Enroll in session</button>
+          <button className="btn btn-primary" onClick= {()=>{
+            enrolledSession(session._id)
+          }} >Enroll in session</button>
         </div>
       </div>
     </div>

@@ -37,10 +37,12 @@ const UserSchema = new Schema({
   subject: {
     type: String
   },
-  session: {
-    type: Schema.Types.ObjectId,
-    ref:'session'
-  }
+  session: [
+      {
+        type: Schema.Types.ObjectId,
+        ref:'session'
+      }
+    ]
 });
 const User = new mongoose.model("user", UserSchema);
 User.createIndexes();

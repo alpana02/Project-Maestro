@@ -28,7 +28,6 @@ export default function AboutMentee(props) {
     setProfile(data);
   };
 
-
   return <div>
     <div className="container rounded bg-white">
       <div className="row">
@@ -51,9 +50,11 @@ export default function AboutMentee(props) {
               <div className="col-md-12"><label className="labels">Email</label><p>{profile.email}</p> </div>
               <div className="col-md-12"><label className="labels">Class</label><p>{profile.classsp}</p> </div>
               <div className="col-md-12"><label className="labels">Role</label><p>{profile.role}</p> </div>
+              {console.log(profile.session)}
             </div>
           </div>
         </div>
+        
       </div>
     </div>
   </div>;

@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const fetchUser = require("../middleware/fetchUser");
 const Session = require("../models/Session");
+const User = require("../models/User")
 const { body, validationResult } = require("express-validator");
 
 // ROUTE 1 : get all session of an exisitng user: Login required
@@ -149,16 +150,33 @@ router.delete("/deletesession/:id", fetchUser, async (req, res) => {
   }
 });
 
+// ROUTE 5 : enroll sessions
+router.post(
+  "/enrollsession",
+  fetchUser,
+  async (req, res) => {
+    try {
+      let user = await User.findById(req.user.id);
+      const {sessionid} = req.body;
+      await user.session.push(sessionid);
+      const saveuser = await user.save();
+      res.json(saveuser);
+    } catch (error) {
+      console.log(error.message);
+      res.status(500).send("Oops internal server error occured");
+    }
+  }
+);
+
 // ROUTE 5 : fetch all sessions
-router.get("/getAllsessions", fetchUser, async (req, res) => {
+router.get("/enrolledsessions", fetchUser, async (req, res) => {
   try {
-    const session = await Session;
+    const session = await Session.find({ user: req.user.id });
     res.json(session);
   } catch (error) {
     console.log(error.message);
     res.status(500).send("Oops internal server error occured");
   }
 });
-
 
 module.exports = router;

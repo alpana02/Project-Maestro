@@ -112,7 +112,7 @@ export default function Home(props) {
                 </select>
               </div>
               <div className="col-3">
-                <button type="submit" class="btn btn-primary">
+                <button type="submit" class="btn btn-primary" >
                   Submit
                 </button>
               </div>
