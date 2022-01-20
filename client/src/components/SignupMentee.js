@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import axios from "axios";
 
 export const SignupMentee = (props) => {
   let navigate = useNavigate();
@@ -43,7 +42,6 @@ export const SignupMentee = (props) => {
     );
     const respoJSON = await resp.json();
     setcredentials({ ...credentials, img: respoJSON.url });
-    console.log(credentials.img);
   }
   const handleSubmit = async (e) => {
     e.preventDefault();

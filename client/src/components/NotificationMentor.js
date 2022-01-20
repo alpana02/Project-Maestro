@@ -102,12 +102,12 @@ export default function NotificationMentor(props) {
         <div className="col-12 mt-5">
         <h2>Booking Requests to you</h2>
           <div className="row">
-          <h4 className="mt-3">{profile.length === 0 && "No Booking Requests Yet"}</h4>  
+          <h5 className="mt-3">{profile.length === 0 && "No Booking Requests Yet"}</h5>  
             {profile.map((profile, index) => (
               <div className="col-4 mb-xl-5 mb-7 mb-sm-6 mb-md-6 mb-lg-6 d-flex">
                 <div className="card" style={{ width: "18rem" }}>
                   <div className="card-body">
-                    <h5 className="card-title">{profile.title}</h5>
+                    <h4>{profile.title}</h4>
                     <p
                       className="card-text"
                       style={{ fontSize: "14px", marginBottom: "0.3rem" }}

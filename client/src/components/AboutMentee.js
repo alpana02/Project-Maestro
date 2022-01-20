@@ -123,7 +123,7 @@ export default function AboutMentee(props) {
     </div>
     <div className="container">
       {
-        <div className="col-12 mt-5">
+        <div className="col-12 mt-2">
           <h2>Enrolled Sessions</h2>
           <div className="row">
             <h4 className="mt-3">{sessions.length === 0 && "No Sessions Requests Yet"}</h4>
@@ -131,7 +131,7 @@ export default function AboutMentee(props) {
               <div className="col-4 mb-xl-5 mb-7 mb-sm-6 mb-md-6 mb-lg-6 d-flex">
                 <div className="card" style={{ width: "18rem" }}>
                   <div className="card-body">
-                    <h5 className="card-title">{session.title}</h5>
+                    <h4>{session.title}</h4>
                     <p
                       className="card-text"
                       style={{ fontSize: "14px", marginBottom: "0.3rem" }}

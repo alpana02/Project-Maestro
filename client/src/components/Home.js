@@ -61,7 +61,8 @@ export default function Home(props) {
   return (
     <div>
     <div className="col-12 mt-3">
-            <div className="row">
+      <h2>Top Free Sessions By mentors</h2>
+            <div className="row my-3 py-3"  >
             {sessions.map((session) => {
           return (
             <SessionitemMentee
@@ -73,11 +74,13 @@ export default function Home(props) {
           );
         })}
         </div></div>
+      <div className="container mt-5">
+      <h1>Discover Top mentors</h1>
       <form onSubmit={handleSubmit}>
-        <div className="conatiner mt-5">
+        <div className="conatiner mt-3">
           <div className="container">
             <div className="row">
-              <h4>Filter</h4>
+              <h5>Filter By class and Subjects</h5>
               <div className="col-3">
                 <select
                   className="form-select"
@@ -121,7 +124,6 @@ export default function Home(props) {
         </div>
       </form>
 
-      <div>
         {
           <div className="col-12 mt-3">
             <div className="row">
