@@ -132,8 +132,8 @@ export default function Home(props) {
                   <div className="card" style={{ width: "18rem" }}>
                     <img
                       width="500"
-                      height="200"
-                      src="https://picsum.photos/seed/picsum/200/300"
+                      height="250"
+                      src={usercards.img}
                       className="card-img-top"
                       alt={usercards.name}
                     />

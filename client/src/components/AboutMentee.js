@@ -60,37 +60,36 @@ export default function AboutMentee(props) {
   return <div>
     <div className="container rounded bg-white">
       <div className="row">
-        <div className="col-md-3 border-right">
-          <div className="d-flex flex-column align-items-center text-center p-4 py-5">
-            <img className="rounded-circle mt-5" width="150px"
-              src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"
-              alt="This is" /><span className="font-weight-bold">
-              {profile.name}</span><span className="text-black-50">{profile.email}</span><span> </span></div>
-        </div>
-        <div className="col-md-5 border-right">
-          <div className="p-3 py-5">
-            <div className="d-flex justify-content-between align-items-center mb-3">
-              <h3 className="text-right">Profile Details</h3>
+      <div class="w3-content w3-margin-top" style={{ maxWidth: "1400px" }}>
+          <div class="w3-row-padding">
+            <div class="w3-third">
+
+              <div class="w3-white w3-text-grey w3-card-4">
+                <div class="w3-display-container">
+                  <img src={profile.img} style={{ width: "100%" }} alt="Avatar" />
+                </div>
+              </div><br />
             </div>
-            <div className="row mt-2">
-              <div className="col-md-12"><label className="labels">Name</label><p>{profile.name}</p> </div>
-            </div>
-            <div className="row mt-3">
-              <div className="col-md-12"><label className="labels">Email</label><p>{profile.email}</p> </div>
-              <div className="col-md-12"><label className="labels">Class</label><p>{profile.classsp}</p> </div>
-              <div className="col-md-12"><label className="labels">Role</label><p>{profile.role}</p> </div>
+            <div class="w3-twothird">
+              <div class="w3-container w3-card w3-white w3-margin-bottom">
+                <div class="w3-container"><br /><h2 class="w3-text-grey w3-padding-16"><i class="fa fa-certificate fa-fw w3-margin-right w3-xxlarge w3-text-blue"></i>About {profile.name}</h2><hr />
+                  <p><i class="fa fa-home fa-fw w3-margin-right w3-large w3-text-blue"></i>Bangaluru, India</p>
+                  <p><i class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-blue"></i>{profile.email}</p>
+                  <p><i class="fa fa-chalkboard fa-fw w3-margin-right w3-large w3-text-blue"></i>Class Specialization - {profile.classsp}</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-        
+
       </div>
     </div>
     <div className="container">
       {
         <div className="col-12 mt-5">
-        <h2>Booked Classes</h2>
+          <h2>Booked Classes</h2>
           <div className="row">
-          <h4 className="mt-3">{bookings.length === 0 && "No Booking Requests Yet"}</h4>  
+            <h4 className="mt-3">{bookings.length === 0 && "No Booking Requests Yet"}</h4>
             {bookings.map((booking, index) => (
               <div className="col-4 mb-xl-5 mb-7 mb-sm-6 mb-md-6 mb-lg-6 d-flex">
                 <div className="card" style={{ width: "18rem" }}>
@@ -125,9 +124,9 @@ export default function AboutMentee(props) {
     <div className="container">
       {
         <div className="col-12 mt-5">
-        <h2>Enrolled Sessions</h2>
+          <h2>Enrolled Sessions</h2>
           <div className="row">
-          <h4 className="mt-3">{sessions.length === 0 && "No Sessions Requests Yet"}</h4>  
+            <h4 className="mt-3">{sessions.length === 0 && "No Sessions Requests Yet"}</h4>
             {sessions.map((session) => (
               <div className="col-4 mb-xl-5 mb-7 mb-sm-6 mb-md-6 mb-lg-6 d-flex">
                 <div className="card" style={{ width: "18rem" }}>

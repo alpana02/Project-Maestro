@@ -55,86 +55,58 @@ export default function About(props) {
   }
 
 
-  return(
-  <>
-    <div className="container rounded bg-white">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-5"><img className="mt-5" width="450px" style={{ borderRadius: "25px" }}
-            src="./img1.jpeg"
-            alt="This is" /></div>
-          <div class="col-sm-7" >
-            <h5 className="mt-5">Welcome to your profile</h5>
-            <h2>{profile.name}</h2>
-            <h5
-              className="card-text"
-              style={{ fontSize: "14px", marginBottom: "0.3rem" }}
-            >
-              <b>{profile.work}</b> at <b>{profile.company}</b>
-            </h5>
-          </div>
-        </div>
-      </div>
-      <div className="row">
-        <div className="col-md-3 border-right">
-          <div className="d-flex flex-column align-items-center text-center p-4 py-5">
-            <img className="rounded-circle mt-5" width="150px"
-              src="./img1.jpeg"
-              alt="This is" /><span className="font-weight-bold">
-              {profile.name}</span><span className="text-black-50">{profile.email}</span><span> </span>
-          </div>
-        </div>
-        <div className="col-md-5 border-right">
-          <div className="p-3 py-5">
-            <div className="d-flex justify-content-between align-items-center mb-3">
-              <h4 className="text-right">Profile Settings</h4>
+  return (
+    <>
+      <div className="container rounded bg-white">
+        <div class="w3-content w3-margin-top" style={{ maxWidth: "1400px" }}>
+
+
+          <div class="w3-row-padding">
+
+
+            <div class="w3-third">
+
+              <div class="w3-white w3-text-grey w3-card-4">
+                <div class="w3-display-container">
+                  <img src={profile.img} style={{ width: "100%" }} alt="Avatar" />
+                </div>
+              </div><br />
+
             </div>
-            <div className="row mt-2">
-              <div className="col-md-12"><label className="labels">Name</label><p>{profile.name}</p> </div>
-            </div>
-          </div>
-          <div className="col-md-5 border-right">
-            <div className="p-3 py-5">
-              <div className="d-flex justify-content-between align-items-center mb-3">
-                <h4 className="text-right">Profile Settings</h4>
-              </div>
-              <div className="row mt-2">
-                <div className="col-md-12">
-                  <label className="labels">Name</label>
-                  <p>{profile.name}</p>
+
+            <div class="w3-twothird">
+
+              <div class="w3-container w3-card w3-white w3-margin-bottom">
+              
+              <div class="w3-container"><br/><h2 class="w3-text-grey w3-padding-16"><i class="fa fa-certificate fa-fw w3-margin-right w3-xxlarge w3-text-blue"></i>About {profile.name}</h2><hr/>
+                  <p><i class="fa fa-briefcase fa-fw w3-margin-right w3-large w3-text-blue"></i>{profile.work} at {profile.company}</p>
+                  <p><i class="fa fa-cogs fa-fw w3-margin-right w3-large w3-text-blue"></i>Years of experience - {profile.experience}</p>
+                  <p><i class="fa fa-home fa-fw w3-margin-right w3-large w3-text-blue"></i>Bangaluru, India</p>
+                  <p><i class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-blue"></i>{profile.email}</p>
+                  <p><i class="fa fa-chalkboard fa-fw w3-margin-right w3-large w3-text-blue"></i>Class Specialization - {profile.classsp}</p>
+                  <p><i class="fa fa-book-open fa-fw w3-margin-right w3-large w3-text-blue"></i>Subject Specialization - {profile.subject}</p><br/><br/>
                 </div>
               </div>
-              <div className="row mt-3">
-                <div className="col-md-12">
-                  <label className="labels">Email</label>
-                  <p>{profile.email}</p>
-                </div>
-                <div className="col-md-12">
-                  <label className="labels">Class</label>
-                  <p>{profile.classsp}</p>
-                </div>
-                <div className="col-md-12">
-                  <label className="labels">Role: </label>
-                  <p>{profile.role}</p>
-                </div>
-              </div>
+
             </div>
+
           </div>
         </div>
+
+
+        <div className="container card border py-4 mb-5">
+          <div className="d-flex justify-content-between align-items-center mx-5">
+            <h4 className="text-right">Your Accepted Bookings</h4>
+          </div>
+          <Calendar
+            localizer={localizer}
+            events={allEvents}
+            startAccessor="start"
+            endAccessor="end"
+            style={{ height: 500, margin: "50px" }}
+          />
+        </div>
       </div>
-      <div className="container">
-      <div className="d-flex justify-content-between align-items-center mb-3 ml-3">
-        <h4 className="text-right">Your Accepted Bookings</h4>
-      </div>
-      <Calendar
-        localizer={localizer}
-        events={allEvents}
-        startAccessor="start"
-        endAccessor="end"
-        style={{ height: 500, margin: "50px" }}
-      />
-    </div>
-    </div>
     </>
   );
 }
