@@ -84,9 +84,9 @@ export default function AboutMentee(props) {
 
       </div>
     </div>
-    <div className="container">
+    <div className="card mx-3 container rounded bg-white">
       {
-        <div className="col-12 mt-5">
+        <div className="col-12">
           <h2>Booked Classes</h2>
           <div className="row">
             <h4 className="mt-3">{bookings.length === 0 && "No Booking Requests Yet"}</h4>
@@ -121,7 +121,7 @@ export default function AboutMentee(props) {
         </div>
       }
     </div>
-    <div className="container">
+    <div className="card mx-3 mt-3 mb-2 container rounded bg-white">
       {
         <div className="col-12 mt-2">
           <h2>Enrolled Sessions</h2>

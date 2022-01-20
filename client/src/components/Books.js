@@ -1,7 +1,6 @@
-import React, { useState, useEffect, useRef, } from 'react';
+import React, { useState, useEffect, } from 'react';
 import './Books.css';
 import { ToastContainer, toast } from 'react-toastify';
-import { Input } from '@material-ui/core'
 import axios from 'axios';
 import BookCard from './BookCard';
 import { useNavigate } from "react-router-dom";
@@ -12,7 +11,7 @@ export default function Books(props) {
     const [query, setQuery] = useState('');
     const [loading, setLoading] = useState(false);
     const [cards, setCards] = useState([]);
-    const ref = useRef(null);
+    
     let navigate = useNavigate();
 
     useEffect(() => {
@@ -58,12 +57,12 @@ export default function Books(props) {
                         className='display-2 text-center text-white mb-3 my-5'
 
                     >
-                        Google Books
+                        <b>Online Books</b>
                     </h1>
                     <div>
                         <div class="input-group mb-3">
 
-                            <Input
+                            <input
                                 class="form-control mr-sm-6"
                                 placeholder='Book Search'
                                 value={query}

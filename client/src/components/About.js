@@ -59,11 +59,7 @@ export default function About(props) {
     <>
       <div className="container rounded bg-white">
         <div class="w3-content w3-margin-top" style={{ maxWidth: "1400px" }}>
-
-
           <div class="w3-row-padding">
-
-
             <div class="w3-third">
 
               <div class="w3-white w3-text-grey w3-card-4">
@@ -71,29 +67,21 @@ export default function About(props) {
                   <img src={profile.img} style={{ width: "100%" }} alt="Avatar" />
                 </div>
               </div><br />
-
             </div>
-
             <div class="w3-twothird">
-
               <div class="w3-container w3-card w3-white w3-margin-bottom">
-              
-              <div class="w3-container"><br/><h2 class="w3-text-grey w3-padding-16"><i class="fa fa-certificate fa-fw w3-margin-right w3-xxlarge w3-text-blue"></i>About {profile.name}</h2><hr/>
+                <div class="w3-container"><br /><h2 class="w3-text-grey w3-padding-16"><i class="fa fa-certificate fa-fw w3-margin-right w3-xxlarge w3-text-blue"></i>About {profile.name}</h2><hr />
                   <p><i class="fa fa-briefcase fa-fw w3-margin-right w3-large w3-text-blue"></i>{profile.work} at {profile.company}</p>
                   <p><i class="fa fa-cogs fa-fw w3-margin-right w3-large w3-text-blue"></i>Years of experience - {profile.experience}</p>
                   <p><i class="fa fa-home fa-fw w3-margin-right w3-large w3-text-blue"></i>Bangaluru, India</p>
                   <p><i class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-blue"></i>{profile.email}</p>
                   <p><i class="fa fa-chalkboard fa-fw w3-margin-right w3-large w3-text-blue"></i>Class Specialization - {profile.classsp}</p>
-                  <p><i class="fa fa-book-open fa-fw w3-margin-right w3-large w3-text-blue"></i>Subject Specialization - {profile.subject}</p><br/><br/>
+                  <p><i class="fa fa-book-open fa-fw w3-margin-right w3-large w3-text-blue"></i>Subject Specialization - {profile.subject}</p><br /><br />
                 </div>
               </div>
-
             </div>
-
           </div>
         </div>
-
-
         <div className="container card border py-4 mb-5">
           <div className="d-flex justify-content-between align-items-center mx-5">
             <h4 className="text-right">Your Accepted Bookings</h4>
