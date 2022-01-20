@@ -7,12 +7,12 @@ export default function SignupHome() {
       <div className="container" style={{ margin: "50px" }}>
         <div className="body d-md-flex align-items-center justify-content-between">
           <div className="box-1 mt-md-0 mt-5">
-            {" "}
+            
             <img
               src="https://images.pexels.com/photos/2033997/pexels-photo-2033997.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
               className=""
               alt=""
-            />{" "}
+            />
           </div>
           <div className=" box-2 d-flex flex-column h-100 text-center">
             <div className="card-body">

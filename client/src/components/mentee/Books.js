@@ -60,23 +60,23 @@ export default function Books(props) {
                         <b>Online Books</b>
                     </h1>
                     <div>
-                        <div class="input-group mb-3">
+                        <div className="input-group mb-3">
 
                             <input
-                                class="form-control mr-sm-6"
+                                className="form-control mr-sm-6"
                                 placeholder='Book Search'
                                 value={query}
                                 onChange={e => setQuery(e.target.value)}
                                 style={{ backgroundColor: "white", borderRadius: "4px" }}
                             />
-                            <button class="btn btn-primary my-2 my-sm-0 mx-2" type="submit" onClick={handleSubmit}><i className='fas fa-search' style={{ borderRadius: "4px" }}></i></button>
+                            <button className="btn btn-primary my-2 my-sm-0 mx-2" type="submit" onClick={handleSubmit}><i className='fas fa-search' style={{ borderRadius: "4px" }}></i></button>
                         </div>
 
 
                         <div className='d-flex text-white justify-content-center'>
                             <form className='d-flex'>
-                                <div class="form-group mb-5 pb-5 mx-2">
-                                    <label class="mx-2" for='maxResults' style={{ color: "white" }}>Max Results</label>
+                                <div className="form-group mb-5 pb-5 mx-2">
+                                    <label className="mx-2" htmlFor='maxResults' style={{ color: "white" }}>Max Results</label>
                                     <input
                                         type='number'
                                         id='maxResults'
@@ -85,8 +85,8 @@ export default function Books(props) {
                                         onChange={e => setMaxResults(e.target.value)}
                                     />
                                 </div>
-                                <div class="form-group mb-5 pb-5 mx-2">
-                                    <label class="mx-2" for='startIndex' style={{ color: "white" }}>Start Index</label>
+                                <div className="form-group mb-5 pb-5 mx-2">
+                                    <label className="mx-2" htmlFor='startIndex' style={{ color: "white" }}>Start Index</label>
                                     <input
                                         type='number'
                                         id='startIndex'

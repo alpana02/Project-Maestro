@@ -23,16 +23,14 @@ export const Login = (props) => {
       }),
     });
     const json = await response.json();
-    console.log(json);
     if (json.success) {
       // save tha uth and redirect
+      localStorage.setItem("role", json.user.role);
       localStorage.setItem("token", json.authToken);
       localStorage.setItem("email", json.user.email);
-      localStorage.setItem("role", json.user.role);
-      if (json.user.role === "mentor") {
+      if (localStorage.getItem('role') === "mentor") {
         navigate("/about");
-      }
-      else navigate("/");
+      } else navigate("/");
     }
   };
 
@@ -59,6 +57,9 @@ export const Login = (props) => {
                         <p>Please login to your account</p>
 
                         <div className="form-outline mb-4">
+                          <label htmlFor="email" className="form-label">
+                            Email
+                          </label>
                           <input
                             type="email"
                             className="form-control"
@@ -69,12 +70,12 @@ export const Login = (props) => {
                             aria-describedby="emailHelp"
                             required
                           />
-                          <label htmlFor="email" className="form-label">
-                            Email
-                          </label>
                         </div>
 
                         <div className="form-outline mb-4">
+                          <label htmlFor="password" className="form-label">
+                            Password
+                          </label>
                           <input
                             type="password"
                             className="form-control"
@@ -85,9 +86,6 @@ export const Login = (props) => {
                             minLength={5}
                             required
                           />
-                          <label htmlFor="password" className="form-label">
-                            Password
-                          </label>
                         </div>
 
                         <div className="text-center pt-1 mb-5 pb-1">

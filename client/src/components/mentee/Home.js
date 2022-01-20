@@ -1,6 +1,6 @@
-import React, { useEffect, useState, useRef, useContext } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import SessionitemMentee from "./SessionItemMentee";
-import sessionContext from "../context/notes/noteContext";
+import sessionContext from "../../context/notes/noteContext";
 import { Link, useNavigate } from "react-router-dom";
 import "./Home.css";
 
@@ -32,18 +32,6 @@ export default function Home(props) {
 
   const context = useContext(sessionContext);
   const { sessions, getSessions } = context;
-  const [session, setsession] = useState({
-    _id: "",
-    title: "",
-    description: "",
-    tag: "",
-  });
- 
-  const updateSession = (currentSession) => {
-    ref.current.click();
-    setsession(currentSession);
-  };
-  const ref = useRef(null);
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -67,7 +55,6 @@ export default function Home(props) {
           return (
             <SessionitemMentee
               key={session._id}
-              updateSession={updateSession}
               session={session}
               showAlert={props.showAlert}
             />
@@ -88,7 +75,7 @@ export default function Home(props) {
                   onChange={onChange}
                   aria-label="Default select example"
                 >
-                  <option selected>Select Class</option>
+                  <option defaultValue>Select Class</option>
                   <option value="1">1</option>
                   <option value="2">2</option>
                   <option value="3">3</option>
@@ -108,14 +95,14 @@ export default function Home(props) {
                   onChange={onChange}
                   aria-label="Default select example"
                 >
-                  <option selected>Select Subject</option>
+                  <option defaultValue>Select Subject</option>
                   <option value="math">Math</option>
                   <option value="science">Science</option>
                   <option value="english">English</option>
                 </select>
               </div>
               <div className="col-3">
-                <button type="submit" class="btn btn-primary" >
+                <button type="submit" className="btn btn-primary" >
                   Submit
                 </button>
               </div>

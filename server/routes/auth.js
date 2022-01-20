@@ -12,27 +12,6 @@ const fs = require("fs");
 
 const JWT_SECRET = "secretkeyforsession";
 
-// //defining the local storage location so that the files received from the client will be saved in the defined location.
-// const storage = multer.diskStorage({
-//   destination: (req, file, cb) => {
-//     cb(null, "uploads");
-//   },
-//   filename: (req, file, cb) => {
-//     cb(null, "img" + "_" + Date.now() + path.extname(file.originalname));
-//   },
-// });
-
-// const fileFilter = (req, file, cb) => {
-//   const allowedFileTypes = ["image/jpeg", "image/jpg", "image/png"];
-//   if (allowedFileTypes.includes(file.mimetype)) {
-//     cb(null, true);
-//   } else {
-//     cb(null, false);
-//   }
-// };
-
-// let upload = multer({ storage, fileFilter });
-
 // AUTH ROUTES :
 // Route1: signup
 router.post("/signup", async (req, res) => {
@@ -114,7 +93,6 @@ router.post(
         },
       };
       const authToken = jwt.sign(data, JWT_SECRET);
-      console.log("login success");
       success = true;
       res.json({ success, authToken, user });
     } catch (error) {

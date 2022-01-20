@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { AddNote } from "./AddNote";
 import Noteitem from "./Noteitem";
-import noteContext from "../context/notes/noteContext";
+import noteContext from "../../context/notes/noteContext";
 import { useNavigate } from "react-router-dom";
 
 export default function Notes(props) {

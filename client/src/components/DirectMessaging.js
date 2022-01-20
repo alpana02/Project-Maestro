@@ -9,8 +9,6 @@ export default function DirectMessaging (props) {
     let navigate = useNavigate();
 
     async function getUser() {
-
-        console.log(user);
         let formdata = new FormData();
         formdata.append('email', user);
         formdata.append('username', user);

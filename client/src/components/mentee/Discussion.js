@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { db } from '../firebase'
+import { db } from '../../firebase'
 import SendRoomMessages from './SendRoomMessages';
 import { useNavigate } from "react-router-dom";
 import './Discussion.css'
@@ -38,7 +38,7 @@ export default function Discussion() {
             setMessages(snapshot.docs.map(doc => doc.data()))
 
         })
-
+    // eslint-disable-next-line
     }, []);
 
     return (

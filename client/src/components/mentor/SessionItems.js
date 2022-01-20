@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import sessionContext from "../context/notes/noteContext";
+import sessionContext from "../../context/notes/noteContext";
 
 export default function Sessionitem(props) {
   const context = useContext(sessionContext);

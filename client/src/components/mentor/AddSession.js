@@ -1,15 +1,10 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
-import { AddSession } from "./AddSession";
-import Sessionitem from "./SessionItems";
-import sessionContext from "../context/notes/noteContext";
-import { useNavigate } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import sessionContext from "../../context/notes/noteContext";
 
-export default function CreateSession(props) {
+export const AddSession = (props) => {
   const context = useContext(sessionContext);
-  let navigate = useNavigate();
-  const { sessions, getSessions, editSession } = context;
+  const { addSession } = context;
   const [session, setsession] = useState({
-    _id: "",
     creator: "",
     title: "",
     subject: "",
@@ -23,72 +18,47 @@ export default function CreateSession(props) {
 
   const handleClick = (e) => {
     e.preventDefault();
-    refClose.current.click();
-    editSession(session._id, session.creator, session.title,
-    session.subject,
-    session.topic,
-    session.classenrolled,
-    session.date,
-    session.time,
-    session.description,
-    session.link );
-    props.showAlert("Updated Succesfully", "success");
+    addSession(session.creator,
+      session.title,
+      session.subject,
+      session.topic,
+      session.classenrolled,
+      session.date,
+      session.time,
+      session.description,
+      session.link);
+    setsession({
+      creator: "",
+      title: "",
+      subject: "",
+      topic: "",
+      classenrolled: "",
+      date: "",
+      time: "",
+      description: "",
+      link: ""
+    })
+    props.showAlert("Session Added Succesfully", "success")
   };
   const onChange = (e) => {
     setsession({ ...session, [e.target.name]: e.target.value });
   };
-  useEffect(() => {
-    if (localStorage.getItem("token")) {
-      getSessions();
-    } else {
-      navigate("/login");
-    }
-    // eslint-disable-next-line
-  }, []);
-  const updateSession = (currentSession) => {
-    ref.current.click();
-    setsession(currentSession);
-  };
-  const ref = useRef(null);
-  const refClose = useRef(null);
+
   return (
-    <>
-      <AddSession showAlert={props.showAlert} />
-      <button
-        type="button"
-        className="btn btn-primary d-none"
-        data-bs-toggle="modal"
-        data-bs-target="#exampleModal"
-        ref={ref}
-      >
-        Edit session modal
-      </button>
-      <div
-        className="modal fade"
-        id="exampleModal"
-        tabIndex="-1"
-        aria-labelledby="exampleModalLabel"
-        aria-hidden="true"
-      >
-        <div className="modal-dialog">
-          <div className="modal-content">
-            <div className="modal-header">
-              <h5 className="modal-title" id="exampleModalLabel">
-                Edit Session
-              </h5>
-              <button
-                type="button"
-                className="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
-            </div>
-            <div className="modal-body">
-            <form id="contact-form" role="form" form onSubmit={handleClick}>
-                    <div class="controls">
-                      <div class="row">
-                        <div class="col-md-6">
-                          <div class="form-group"> <label htmlFor="creator">
+    <div className="container my-3">
+      <div className="container"> <div className=" text-center ">
+        <h1>Add a Session</h1>
+      </div>
+        <div className="row ">
+          <div className="col-lg-7 mx-auto">
+            <div className="card mt-2 mx-auto p-4 bg-light">
+              <div className="card-body bg-light">
+                <div className="container">
+                  <form id="contact-form" form onSubmit={handleClick}>
+                    <div className="controls">
+                      <div className="row">
+                        <div className="col-md-6">
+                          <div className="form-group"> <label htmlFor="creator">
                             Creator *
                           </label>
                             <input
@@ -102,9 +72,9 @@ export default function CreateSession(props) {
                               required
                             /> </div>
                         </div>
-                        <div class="col-md-6">
-                          <div class="form-group" style={{ marginBottom: "0px" }}> <label htmlFor="title" >
-                            Title
+                        <div className="col-md-6">
+                          <div className="form-group" style={{ marginBottom: "0px" }}> <label htmlFor="title" >
+                            Title *
                           </label>
                             <input
                               type="text"
@@ -117,8 +87,8 @@ export default function CreateSession(props) {
                               required
                             /></div>
                         </div>
-                        <div class="col-md-6">
-                          <div class="form-group mt-3" style={{ marginBottom: "0px" }}> <label htmlFor="subject" >
+                        <div className="col-md-6">
+                          <div className="form-group mt-3" style={{ marginBottom: "0px" }}> <label htmlFor="subject" >
                             Subject *
                           </label>
                           <select type="text"
@@ -128,7 +98,7 @@ export default function CreateSession(props) {
                               value={session.subject}
                               onChange={onChange}
                               required>
-                            <option value="" selected disabled>--Select Your Subject--</option>
+                            <option value="" defaultValue disabled>--Select Your Subject--</option>
                             <option>Math</option>
                             <option>Science</option>
                             <option>English</option>
@@ -137,8 +107,8 @@ export default function CreateSession(props) {
                             </div>
                         </div>
 
-                        <div class="col-md-6">
-                          <div class="form-group mt-3" style={{ marginBottom: "0px" }}> <label htmlFor="topic" >
+                        <div className="col-md-6">
+                          <div className="form-group mt-3" style={{ marginBottom: "0px" }}> <label htmlFor="topic" >
                             Topics *
                           </label>
                             <input
@@ -151,8 +121,8 @@ export default function CreateSession(props) {
                               onChange={onChange}
                             /></div>
                         </div>
-                        <div class="col-md-6">
-                          <div class="form-group mt-3" style={{ marginBottom: "0px" }}> <label htmlFor="classenrolled" >
+                        <div className="col-md-6">
+                          <div className="form-group mt-3" style={{ marginBottom: "0px" }}> <label htmlFor="classenrolled" >
                             Class
                           </label>
                             <input
@@ -164,8 +134,8 @@ export default function CreateSession(props) {
                               onChange={onChange}
                             /></div>
                         </div>
-                        <div class="col-md-6">
-                          <div class="form-group mt-3" style={{ marginBottom: "0px" }}> <label htmlFor="date" >
+                        <div className="col-md-6">
+                          <div className="form-group mt-3" style={{ marginBottom: "0px" }}> <label htmlFor="date" >
                             Session Date *
                           </label>
                             <input
@@ -177,8 +147,8 @@ export default function CreateSession(props) {
                               onChange={onChange}
                             /></div>
                         </div>
-                        <div class="col-md-6">
-                          <div class="form-group mt-3" style={{ marginBottom: "0px" }}> <div className="mb-3">
+                        <div className="col-md-6">
+                          <div className="form-group mt-3" style={{ marginBottom: "0px" }}> <div className="mb-3">
                             <label htmlFor="time" >
                               Please specify the time *
                             </label>
@@ -192,8 +162,8 @@ export default function CreateSession(props) {
                             />
                           </div></div>
                         </div>
-                        <div class="col-md-6">
-                          <div class="form-group mt-3" style={{ marginBottom: "0px" }}> <label htmlFor="link" >
+                        <div className="col-md-6">
+                          <div className="form-group mt-3" style={{ marginBottom: "0px" }}> <label htmlFor="link" >
                             Joining Links *
                           </label>
                             <input
@@ -208,9 +178,9 @@ export default function CreateSession(props) {
                         </div>
                       </div>
                       
-                      <div class="row">
-                        <div class="col-md-12">
-                          <div class="form-group"> <label htmlFor="description" >
+                      <div className="row">
+                        <div className="col-md-12">
+                          <div className="form-group"> <label htmlFor="description" >
                             Description *
                           </label>
                             <input
@@ -226,41 +196,23 @@ export default function CreateSession(props) {
 
                       </div>
                     </div>
-                    
-                <div className="modal-footer">
-                  <button
-                    type="button"
-                    className="btn btn-secondary"
-                    data-bs-dismiss="modal"
-                    ref={refClose}
-                  >
-                    Close
-                  </button>
-                  <button type="submit" className="btn btn-primary">
-                    Update Session
-                  </button>
+                    <button
+                      type="submit"
+                      className="btn btn-primary mt-4"
+                    >
+                      Add Session
+                    </button>
+                  </form>
                 </div>
-              </form>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <div className="row my-3">
-        <h1>Your Sessions</h1>
-        <div className="container mx-1">
-          <h6>{sessions.length === 0 && "No Sessions to Display"}</h6>
-        </div>
-        {sessions.map((session) => {
-          return (
-            <Sessionitem
-              key={session._id}
-              updateSession={updateSession}
-              session={session}
-              showAlert={props.showAlert}
-            />
-          );
-        })}
-      </div>
-    </>
+
+
+
+    </div>
   );
-}
+};
+

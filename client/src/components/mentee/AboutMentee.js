@@ -60,22 +60,22 @@ export default function AboutMentee(props) {
   return <div>
     <div className="container rounded bg-white">
       <div className="row">
-      <div class="w3-content w3-margin-top" style={{ maxWidth: "1400px" }}>
-          <div class="w3-row-padding">
-            <div class="w3-third">
+      <div className="w3-content w3-margin-top" style={{ maxWidth: "1400px" }}>
+          <div className="w3-row-padding">
+            <div className="w3-third">
 
-              <div class="w3-white w3-text-grey w3-card-4">
-                <div class="w3-display-container">
+              <div className="w3-white w3-text-grey w3-card-4">
+                <div className="w3-display-container">
                   <img src={profile.img} style={{ width: "100%" }} alt="Avatar" />
                 </div>
               </div><br />
             </div>
-            <div class="w3-twothird">
-              <div class="w3-container w3-card w3-white w3-margin-bottom">
-                <div class="w3-container"><br /><h2 class="w3-text-grey w3-padding-16"><i class="fa fa-certificate fa-fw w3-margin-right w3-xxlarge w3-text-blue"></i>About {profile.name}</h2><hr />
-                  <p><i class="fa fa-home fa-fw w3-margin-right w3-large w3-text-blue"></i>Bangaluru, India</p>
-                  <p><i class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-blue"></i>{profile.email}</p>
-                  <p><i class="fa fa-chalkboard fa-fw w3-margin-right w3-large w3-text-blue"></i>Class Specialization - {profile.classsp}</p>
+            <div className="w3-twothird">
+              <div className="w3-container w3-card w3-white w3-margin-bottom">
+                <div className="w3-container"><br /><h2 className="w3-text-grey w3-padding-16"><i className="fa fa-certificate fa-fw w3-margin-right w3-xxlarge w3-text-blue"></i>About {profile.name}</h2><hr />
+                  <p><i className="fa fa-home fa-fw w3-margin-right w3-large w3-text-blue"></i>Bangaluru, India</p>
+                  <p><i className="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-blue"></i>{profile.email}</p>
+                  <p><i className="fa fa-chalkboard fa-fw w3-margin-right w3-large w3-text-blue"></i>Class Specialization - {profile.classsp}</p>
                 </div>
               </div>
             </div>
@@ -84,12 +84,12 @@ export default function AboutMentee(props) {
 
       </div>
     </div>
-    <div className="card mx-3 container rounded bg-white">
+    <div className="mx-3">
       {
         <div className="col-12">
           <h2>Booked Classes</h2>
           <div className="row">
-            <h4 className="mt-3">{bookings.length === 0 && "No Booking Requests Yet"}</h4>
+            <h4 className="mt-2">{bookings.length === 0 && "No Booking Requests Yet"}</h4>
             {bookings.map((booking, index) => (
               <div className="col-4 mb-xl-5 mb-7 mb-sm-6 mb-md-6 mb-lg-6 d-flex">
                 <div className="card" style={{ width: "18rem" }}>
@@ -121,12 +121,12 @@ export default function AboutMentee(props) {
         </div>
       }
     </div>
-    <div className="card mx-3 mt-3 mb-2 container rounded bg-white">
+    <div className="mx-3 mt-3 mb-2">
       {
         <div className="col-12 mt-2">
           <h2>Enrolled Sessions</h2>
           <div className="row">
-            <h4 className="mt-3">{sessions.length === 0 && "No Sessions Requests Yet"}</h4>
+            <h4 className="mt-2">{sessions.length === 0 && "No Sessions Requests Yet"}</h4>
             {sessions.map((session) => (
               <div className="col-4 mb-xl-5 mb-7 mb-sm-6 mb-md-6 mb-lg-6 d-flex">
                 <div className="card" style={{ width: "18rem" }}>

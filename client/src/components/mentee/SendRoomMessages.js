@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { db } from '../firebase'
+import { db } from '../../firebase'
 import firebase from 'firebase/compat/app'
 import { Input, Button } from '@material-ui/core'
 import { useNavigate } from "react-router-dom";
