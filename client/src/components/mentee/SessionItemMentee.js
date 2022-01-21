@@ -46,7 +46,7 @@ else imgurl='https://cdn.talkesport.com/wp-content/uploads/technology-esports.jp
 
   return (
     <div className="card text-white mx-3" style={{ width: "19rem", backgroundColor:'#231f38' }}>
-      <img className="card-img-top mt-2" src={imgurl}  height={'220px'} alt="subject description" />
+      <img className="card-img-top" src={imgurl}  height={'220px'} alt="subject description" />
       <div className="card-body" style={{backgroundColor:'#28223f'}}>
         <h5>{session.title}</h5>
         <h5 className="card-title text-muted ">

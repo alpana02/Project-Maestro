@@ -233,7 +233,7 @@ try{
           </div>
         </div>
       </div>
-        <div className="card card-body  mt-n7" >
+        <div className="card card-body  mt-n7 mb-5" >
           <div className="row gx-4 mb-2">
             <h3 className="mb-0 text-2xl">
               Testimonial Section
