@@ -43,7 +43,14 @@ const UserSchema = new Schema({
       date: String,
       time: String,
       creator: String,
-      link:String
+      link: String,
+    },
+  ],
+  reviews: [
+    {
+      fromName: String,
+      fromEmail: String,
+      review: String,
     },
   ],
 });
