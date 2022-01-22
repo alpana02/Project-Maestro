@@ -11,6 +11,9 @@ export default function AboutMentee(props) {
     if (!localStorage.getItem("token")) {
       navigate("/login");
     }
+    if (localStorage.getItem("role")==="mentor") {
+      navigate("/notfound");
+    }
     getUser();
     getEnrolledSession();
     getBooking();

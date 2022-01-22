@@ -16,6 +16,9 @@ export default function Home(props) {
     if (!localStorage.getItem("token")) {
       navigate("/login");
     }
+    if (localStorage.getItem("role")==="mentor") {
+      navigate("/about");
+    }
     getSessions();
     getAllUsers();
     // eslint-disable-next-line

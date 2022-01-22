@@ -16,34 +16,32 @@ p {
 
 .msg {
   display: flex;
-  padding: 20px 10px 0 20px;
-  margin: 20px;
-  border-radius: 3000px;
-  box-shadow: 0 0 10px rgb(164, 164, 164);
+  padding: 0px 30px 0 30px;
+  margin: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 2px rgb(164, 164, 164);
   align-items: center;
 }
 
 .sent {
-  background-color: #395dff;
+  background-color: #5930b1;
   color: white;
-  border-top-right-radius: 1000px;
   flex-direction: row-reverse;
-  padding: 20px 20px 0 10px;
+  padding: 0px 30px 0 30px;
   text-align: end;
   float: right;
 }
 
 .received {
-  border: 1px solid lightgray;
-  background-color: #FAFAFA;
-  border-top-left-radius: 1000px;
+  border: 1px solid #ceabca;
+  background-color: #ceabca;
   float: left;
 }
 
 .sendMsg {
   position: fixed;
   display: flex;
-  width: 100%;
+  width: 80%;
   bottom: 0;
   z-index: 1;
   border-top: 1px solid lightgray;

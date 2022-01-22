@@ -82,6 +82,7 @@ export const SignupMentee = (props) => {
       localStorage.setItem("token", json.authToken);
       localStorage.setItem("email", json.user.email);
       localStorage.setItem("role", json.user.role);
+      console.log(localStorage.getItem("role"));
       navigate("/");
       props.showAlert("Account Created Succesfully", "success");
     } else {

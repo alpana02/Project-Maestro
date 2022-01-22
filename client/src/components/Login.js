@@ -28,9 +28,8 @@ export const Login = (props) => {
       localStorage.setItem("role", json.user.role);
       localStorage.setItem("token", json.authToken);
       localStorage.setItem("email", json.user.email);
-      if (localStorage.getItem('role') === "mentor") {
-        navigate("/about");
-      } else navigate("/");
+      console.log(localStorage.getItem("role"));
+      navigate("/");
     }
   };
 
@@ -89,7 +88,7 @@ export const Login = (props) => {
                         </div>
 
                         <div className="text-center pt-1 mb-5 pb-1">
-                          <button type="submit" className="btn btn-primary">
+                          <button className="btn btn-primary" type="submit">
                             Submit
                           </button>
                         </div>

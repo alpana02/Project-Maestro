@@ -43,8 +43,8 @@ export default function Discussion() {
 
     return (
 
-        <div>
-            <div className="msgs">
+        <div className='card px-5'>
+            <div className="msgs mx-4">
                 {messages.map(({ name, text, email }) => {
                     return (
                         <div>
