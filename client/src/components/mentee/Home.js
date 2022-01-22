@@ -37,7 +37,9 @@ export default function Home(props) {
     e.preventDefault();
     const res = totalcards.filter(
       (card) =>{
-        return card.classsp === filterCard.class &&  card.subject === filterCard.subject && card.role === "mentor"
+        if(filterCard.class && filterCard.subject) return card.classsp === filterCard.class &&  card.subject === filterCard.subject && card.role === "mentor"
+        else if(filterCard.class) return card.classsp === filterCard.class && card.role === "mentor"
+        else return card.subject === filterCard.subject && card.role === "mentor"
       }
     );
     setusercards(res);
@@ -75,7 +77,7 @@ export default function Home(props) {
                   onChange={onChange}
                   aria-label="Default select example"
                 >
-                  <option defaultValue>Select Class</option>
+                  <option defaultValue value="">Select Class</option>
                   <option value="1">1</option>
                   <option value="2">2</option>
                   <option value="3">3</option>
@@ -95,7 +97,7 @@ export default function Home(props) {
                   onChange={onChange}
                   aria-label="Default select example"
                 >
-                  <option defaultValue>Select Subject</option>
+                  <option defaultValue value="">Select Subject</option>
                   <option value="math">Math</option>
                   <option value="science">Science</option>
                   <option value="english">English</option>
