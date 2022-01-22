@@ -61,7 +61,8 @@ export default function Home(props) {
       (card) =>{
         if(filterCard.class && filterCard.subject) return card.classsp === filterCard.class &&  card.subject === filterCard.subject && card.role === "mentor"
         else if(filterCard.class) return card.classsp === filterCard.class && card.role === "mentor"
-        else return card.subject === filterCard.subject && card.role === "mentor"
+        else if(filterCard.subject) return card.subject === filterCard.subject && card.role === "mentor"
+        else return card.role === "mentor"
       }
     );
     setusercards(res);
@@ -85,7 +86,7 @@ export default function Home(props) {
             />
           );
         })}
-</Carousel>;
+</Carousel>
             
         </div></div>
       <div className="container mt-5">
