@@ -9,6 +9,9 @@ export default function NotificationMentor(props) {
     if (!localStorage.getItem("token")) {
       navigate("/login");
     }
+    if (localStorage.getItem("role")==="mentee") {
+      navigate("*");
+    }
     getUser();
     // eslint-disable-next-line
   }, []);

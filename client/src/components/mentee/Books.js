@@ -18,6 +18,9 @@ export default function Books(props) {
         if (!localStorage.getItem("token")) {
             navigate("/login");
         }
+        if (localStorage.getItem("role")==="mentor") {
+            navigate("*");
+          }
         // eslint-disable-next-line
     }, []);
 

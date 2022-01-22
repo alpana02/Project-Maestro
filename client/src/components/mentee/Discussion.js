@@ -32,6 +32,9 @@ export default function Discussion() {
         if (!localStorage.getItem("token")) {
             navigate("/login");
         }
+        if (localStorage.getItem("role")==="mentor") {
+            navigate("*");
+          }
         getUser()
         // To get message state
         db.collection('messages').orderBy('createdAt').limit(80).onSnapshot(snapshot => {

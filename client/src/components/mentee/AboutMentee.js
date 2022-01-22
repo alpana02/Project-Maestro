@@ -12,7 +12,7 @@ export default function AboutMentee(props) {
       navigate("/login");
     }
     if (localStorage.getItem("role")==="mentor") {
-      navigate("/notfound");
+      navigate("*");
     }
     getUser();
     getEnrolledSession();

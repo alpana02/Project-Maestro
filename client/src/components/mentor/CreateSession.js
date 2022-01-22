@@ -38,11 +38,13 @@ export default function CreateSession(props) {
     setsession({ ...session, [e.target.name]: e.target.value });
   };
   useEffect(() => {
-    if (localStorage.getItem("token")) {
-      getSessions();
-    } else {
+    if (!localStorage.getItem("token")) {
       navigate("/login");
     }
+    if (localStorage.getItem("role")==="mentee") {
+      navigate("*");
+    }
+    getSessions();
     // eslint-disable-next-line
   }, []);
   const updateSession = (currentSession) => {

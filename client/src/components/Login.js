@@ -28,7 +28,6 @@ export const Login = (props) => {
       localStorage.setItem("role", json.user.role);
       localStorage.setItem("token", json.authToken);
       localStorage.setItem("email", json.user.email);
-      console.log(localStorage.getItem("role"));
       navigate("/");
     }
   };
