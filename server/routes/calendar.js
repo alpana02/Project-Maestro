@@ -105,4 +105,14 @@ router.get("/fetchmenteeBooking", fetchUser, async (req, res) => {
     res.status(500).send("Oops internal server error occured");
   }
 });
+// ROUTE 8 : get all events of an exisitng mentor: Login required
+router.get("/fetchmentorBooking", fetchUser, async (req, res) => {
+  try {
+    const events = await Calendar.find({ user: req.user.id });
+    res.json(events);
+  } catch (error) {
+    console.log(error.message);
+    res.status(500).send("Oops internal server error occured");
+  }
+});
 module.exports = router;

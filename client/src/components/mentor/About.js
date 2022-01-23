@@ -11,6 +11,7 @@ export default function About(props) {
   let navigate = useNavigate();
   const [profile, setProfile] = useState([]);
   const [allEvents, setAllEvents] = useState([]);
+  const [bookings, setBooking] = useState([]);
   const locales = {
     "en-US": require("date-fns/locale/en-US"),
   };
@@ -30,6 +31,7 @@ export default function About(props) {
       navigate("*");
     }
     getUser();
+    getBooking();
     // eslint-disable-next-line
   }, []);
 
@@ -55,6 +57,19 @@ export default function About(props) {
     );
     const events = await response2.json();
     setAllEvents(events);
+  }
+  async function getBooking() {
+    const response = await fetch(
+      `http://localhost:5000/api/calendar/fetchmentorBooking`,
+      {
+        method: "GET",
+        headers: {
+          "auth-token": localStorage.getItem("token"),
+        },
+      }
+    );
+    const data = await response.json();
+    setBooking(data);
   }
 
   return (
@@ -117,7 +132,7 @@ export default function About(props) {
             </div>
           </div>
         </div>
-        <div className="container card border py-4 mb-5">
+        <div className="container card border py-4 mb-5 col-12">
           <div className="d-flex justify-content-between align-items-center mx-5">
             <h3 className="text-right">Your Accepted Bookings</h3>
           </div>
@@ -127,7 +142,36 @@ export default function About(props) {
             startAccessor="start"
             endAccessor="end"
             style={{ height: 500, margin: "50px" }}
-          />
+          />        
+          <div className="row px-5">
+            {bookings.map((booking, index) => (
+              <div className="col-4 mb-xl-5 mb-7 mb-sm-6 mb-md-6 mb-lg-6 d-flex">
+                <div className="card" style={{ width: "18rem" }}>
+                  <div className="card-body">
+                    <h5 className="card-title">{booking.title}</h5>
+                    <p
+                      className="card-text"
+                      style={{ fontSize: "14px", marginBottom: "0.3rem" }}
+                    >
+                      <b>Start Date :</b> {booking.start.substring(0, 10)}
+                    </p>
+                    <p
+                      className="card-text"
+                      style={{ fontSize: "14px", marginBottom: "0.3rem" }}
+                    >
+                      <b>End Date :</b> {booking.end.substring(0, 10)}
+                    </p>
+                    <p
+                      className="card-text"
+                      style={{ fontSize: "14px", marginBottom: "0.3rem" }}
+                    >
+                      <b>Mentee :</b> {booking.createdBy}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
       <div className="card card-body  mt-n7">
