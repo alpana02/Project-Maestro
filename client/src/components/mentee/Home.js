@@ -19,7 +19,7 @@ export default function Home(props) {
     if (localStorage.getItem("role")==="mentor") {
       navigate("/about");
     }
-    getSessions();
+    getSessionsMentee();
     getAllUsers();
     // eslint-disable-next-line
   }, []);
@@ -56,7 +56,7 @@ export default function Home(props) {
   };
 
   const context = useContext(sessionContext);
-  const { sessions, getSessions } = context;
+  const { sessions, getSessionsMentee } = context;
 
   async function handleSubmit(e) {
     e.preventDefault();

@@ -8,6 +8,16 @@ const { body, validationResult } = require("express-validator");
 // ROUTE 1 : get all session of an exisitng user: Login required
 router.get("/fetchallsessions", fetchUser, async (req, res) => {
   try {
+    const session = await Session.find({user: req.user.id});
+    res.json(session);
+  } catch (error) {
+    console.log(error.message);
+    res.status(500).send("Oops internal server error occured");
+  }
+});
+
+router.get("/fetchallsessionsmentee", fetchUser, async (req, res) => {
+  try {
     const session = await Session.find({});
     res.json(session);
   } catch (error) {

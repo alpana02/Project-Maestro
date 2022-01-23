@@ -101,6 +101,24 @@ export default function NoteState(props) {
       return error.message;
     }
   };
+
+  //get all sessions mentee
+  const getSessionsMentee = async () => {
+    try {
+      const response = await fetch(`${host}/api/sessions/fetchallsessionsmentee`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "auth-token": localStorage.getItem("token"),
+        },
+      });
+      const json = await response.json();
+      setsessions(json);
+    } catch (error) {
+      return error.message;
+    }
+  };
+
   //add a sessions
   const addSession = async (creator, title,
     subject,
@@ -200,7 +218,7 @@ export default function NoteState(props) {
 
   return (
     <NoteContext.Provider
-      value={{ notes, setnotes, addNote, deleteNote, editNote, getNotes, sessions, setsessions, addSession, deleteSession, editSession, getSessions }}
+      value={{ notes, setnotes, addNote, deleteNote, editNote, getNotes, sessions, setsessions, addSession, deleteSession, editSession, getSessions, getSessionsMentee }}
     >
       {props.children}
     </NoteContext.Provider>
