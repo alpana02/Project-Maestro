@@ -48,7 +48,7 @@ export const Login = (props) => {
                           style={{ width: "185px" }}
                           alt="logo"
                         />
-                        <h4 className="mt-1 mb-5 pb-1">Project - Maester</h4>
+                        <h4 className="mt-1 mb-5 pb-1">Project - Maestro</h4>
                       </div>
 
                       <form onSubmit={handleSubmit}>
