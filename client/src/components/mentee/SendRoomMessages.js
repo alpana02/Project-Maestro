@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { db } from '../../firebase'
 import firebase from 'firebase/compat/app'
-import { Input, Button } from '@material-ui/core'
+import { Input } from '@material-ui/core'
 import { useNavigate } from "react-router-dom";
 import './Discussion.css'
 
@@ -52,8 +52,8 @@ function SendRoomMessages({ scroll }) {
         <div>
             <form onSubmit={sendMessage}>
                 <div className='sendMsg'>
-                    <Input style={{ width: '48%', fontSize: '15px', fontWeight: '550', marginLeft: '5px', marginBottom: '1px' }} value={message} onChange={(e) => setMessage(e.target.value)} type="text" placeholder="Message.." />
-                    <Button style={{ width: '18%', fontSize: '15px', fontWeight: '550', margin: '4px 5% -13px 5%', maxWidth: '200px' }} type="submit">Send</Button>
+                    <Input style={{ width: '48%', fontSize: '15px', fontWeight: '550', marginLeft: '5px', marginBottom: '1px' }} value={message} onChange={(e) => setMessage(e.target.value)} type="text" placeholder="Type a Message..." />
+                    <button className="btn btn-outline-primary px-5" style={{ fontSize: '15px', margin: '4px 5% -13px 5%' }} type="submit">Send</button>
                 </div>
             </form>
         </div>

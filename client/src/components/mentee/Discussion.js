@@ -43,14 +43,16 @@ export default function Discussion() {
 
     return (
 
-        <div className='card px-5'>
-            <div className="msgs mx-4">
+        <div className='card px-5' style={{backgroundColor:"#EDEDED"}}>
+        <h1 style={{textAlign:"center"}}>Discussion Forum</h1>
+            <div className="msgs mx-4 mb-5 pb-4">
                 {messages.map(({ name, text, email }) => {
                     return (
                         <div>
                             <div key={email} className={`msg ${email === profile.email ? 'sent' : 'received'}`}>
-                                {name}
-                                <p>{text}</p>
+
+                                <p className='mb-1'>{text}</p>
+                                <p className='pt-4 pb-0 mb-1 text-muted' style={{fontSize: "12px"}}>{name}</p>
                             </div>
                         </div>
                     )
