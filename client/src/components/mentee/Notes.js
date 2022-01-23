@@ -25,11 +25,13 @@ export default function Notes(props) {
     setnote({ ...note, [e.target.name]: e.target.value });
   };
   useEffect(() => {
-    if (localStorage.getItem("token")) {
-      getNotes();
-    } else {
+    if (!localStorage.getItem("token")) {
       navigate("/login");
     }
+    if (localStorage.getItem("role")==="mentor") {
+      navigate("*");
+    }
+    getNotes();
     // eslint-disable-next-line
   }, []);
   const updateNote = (currentNote) => {

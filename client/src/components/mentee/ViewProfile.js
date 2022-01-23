@@ -33,6 +33,9 @@ export default function ViewProfile(props) {
     if (!localStorage.getItem("token")) {
       navigate("/login");
     }
+    if (localStorage.getItem("role")==="mentor") {
+      navigate("*");
+    }
     getUser();
     // eslint-disable-next-line
   }, []);

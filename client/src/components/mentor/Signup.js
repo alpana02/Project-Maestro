@@ -82,7 +82,7 @@ export const Signup = (props) => {
       localStorage.setItem("token", json.authToken);
       localStorage.setItem("email", json.user.email);
       localStorage.setItem("role", json.user.role);
-      navigate("/");
+      navigate("/about");
       props.showAlert("Account Created Succesfully", "success");
     } else {
       props.showAlert("Invalid Details", "danger");
