@@ -18,11 +18,12 @@ Contents
 
 1. Clone the repository
 2. Open with code editor and run following commands on the terminal.
+    + ` npm i concurrently `
     + ` cd client `
     + ` npm install `
     + ` cd .. `
     + ` cd server `
-    + ` npm install
+    + ` npm install `
     + ` cd .. `
     + ` npm run dev `
 3. Open the localhost link.
