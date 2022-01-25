@@ -1,5 +1,4 @@
 # Project-Maestro
-### `THEME : GYANDAAN`
 
 `Project-Maestro` is a platform that enables students to find a perfect mentor curated to their needs. <br/>
 Presented by <b>Team Nutella</b>
