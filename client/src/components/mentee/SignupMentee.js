@@ -237,13 +237,11 @@ export const SignupMentee = (props) => {
                   </div>
                   <div className="col-lg-6 d-flex align-items-center gradient-custom-2">
                     <div className="text-white px-3 py-4 p-md-5 mx-md-4">
-                      <h4 className="mb-4">We are more than just a company</h4>
+                      <h4 className="mb-4">Project-Maestro</h4>
                       <p className="small mb-0">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing
-                        elit, sed do eiusmod tempor incididunt ut labore et
-                        dolore magna aliqua. Ut enim ad minim veniam, quis
-                        nostrud exercitation ullamco laboris nisi ut aliquip ex
-                        ea commodo consequat.
+                      It is a free Mentoring Platform with one on bookings and group sessions to benefit school students. Students can enroll and interact with top mentors across the globe, solve their doubts and take the most benefit out of the mentoring.
+                       Mentors can guide students on various subjets based on their specialisation. <br/>
+                       Hope you have a great time 😊
                       </p>
                     </div>
                   </div>

@@ -20,6 +20,11 @@ export default function Navbar(props) {
       ) : (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
           <div className="container-fluid">
+          <img
+                          src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp"
+                          style={{ width: "70px" }}
+                          alt="logo"
+                        />
             <Link className="navbar-brand" to="/">
               Maestro
             </Link>

@@ -20,6 +20,8 @@ import ViewProfile from "./components/mentee/ViewProfile";
 import NotificationMentor from "./components/mentor/NotificationMentor";
 import Books from "./components/mentee/Books";
 import { Notfound } from "./components/Notfound";
+import { HomePage } from "./components/HomePage";
+
 
 function App() {
   const [alert, setAlert] = useState(null);
@@ -54,6 +56,7 @@ function App() {
             <Route exact path="/viewProfile/:id" element={<ViewProfile showAlert={showAlert} />} />
             <Route exact path="/notify" element={<NotificationMentor showAlert={showAlert} />} />
             <Route exact path="/books" element={<Books showAlert={showAlert} />} />
+            <Route exact path="/homepage" element={<HomePage />} />
             <Route path="*" element={<Notfound />} />
             </Routes>
           </div>
