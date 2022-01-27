@@ -3,7 +3,7 @@ import "./SignupHome.css";
 
 export default function SignupHome() {
   return (
-    <div>
+    <div className="container">
       <div className="container" style={{ margin: "50px" }}>
         <div className="body d-md-flex align-items-center justify-content-between">
           <div className="box-1 mt-md-0 mt-5">

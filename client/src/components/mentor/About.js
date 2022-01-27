@@ -73,7 +73,7 @@ export default function About(props) {
   }
 
   return (
-    <>
+    <div className="container">
       <div className="container rounded bg-white">
         <div
           className="w3-content w3-margin-top"
@@ -177,6 +177,7 @@ export default function About(props) {
       <div className="card card-body  mt-n7">
         <div className="row gx-4 mb-2">
           <h3 className="mb-0 text-2xl">Testimonial Section</h3>
+          <h5 className="mt-3">{profile.reviews && profile.reviews.length === 0 && "No Reviews Yet"}</h5>  
           <section style={{ paddingTop: "10px" }}>
             <div className="container my-3">
               <div className="row">
@@ -216,6 +217,6 @@ export default function About(props) {
           </section>
         </div>
       </div>
-    </>
+    </div>
   );
 }

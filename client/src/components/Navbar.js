@@ -20,11 +20,11 @@ export default function Navbar(props) {
       ) : (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
           <div className="container-fluid">
-          <img
-                          src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp"
-                          style={{ width: "70px" }}
-                          alt="logo"
-                        />
+            <img
+              src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp"
+              style={{ width: "70px" }}
+              alt="logo"
+            />
             <Link className="navbar-brand" to="/">
               Maestro
             </Link>
@@ -119,8 +119,9 @@ export default function Navbar(props) {
                 <ul className="navbar-nav me-auto mb-2 mb-lg-0 p-2">
                   <li className="nav-item">
                     <Link
-                      className={`nav-link ${location.pathname === "/session" ? "active" : ""
-                        }`}
+                      className={`nav-link ${
+                        location.pathname === "/session" ? "active" : ""
+                      }`}
                       aria-current="page"
                       to="/session"
                     >
