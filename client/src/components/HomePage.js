@@ -10,17 +10,13 @@ export const HomePage = () => {
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
-                        <img
-                          src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp"
-                          style={{ width: "185px" }}
-                          alt="logo"
-                        />
+                            <img
+                                src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp"
+                                style={{ width: "185px" }}
+                                alt="logo"
+                            />
                             <h1>Project Maestro</h1>
-                            <h2>Project Maestro is a platform where
-                                students enroll to learn and obtain
-                                mentorship and volunteers enroll
-                                themselves to help / mentor those
-                                students.
+                            <h2>Project Maestro is a mentoring platform for underprivileged students
                             </h2>
                             <div className="d-flex justify-content-center justify-content-lg-start">
                                 <a href="/login" className="btn-get-started scrollto">Login</a>
@@ -28,8 +24,6 @@ export const HomePage = () => {
                                 <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" className="glightbox btn-watch-video"><i className="bi bi-play-circle"></i><span>Watch Video</span></a>
                             </div>
                         </div>
-
-
 
                         <div className="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
                             <img src="/img/hero-img.png" className="img-fluid animated" alt="" />
@@ -51,25 +45,45 @@ export const HomePage = () => {
                         <div className="row content">
                             <div className="col-lg-6">
                                 <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                                    magna aliqua.
+                                    Project Maestro is a platform where
+                                    students enroll to learn and obtain
+                                    mentorship and volunteers enroll
+                                    themselves to help / mentor those
+                                    students.
                                 </p>
+                                <p>Tech Stack - By using the MERN stack we have
+                                        created the website.
+                                        MERN stands for MongoDB, Express,
+                                        React, and Node. </p>
                                 <ul>
-                                    <li><i className="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat</li>
-                                    <li><i className="ri-check-double-line"></i> Duis aute irure dolor in reprehenderit in voluptate velit</li>
-                                    <li><i className="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat</li>
+                                    <li>FRONTEND: React</li>
+                                    <li>BACKEND: Node, Express</li>
+                                    
                                 </ul>
                             </div>
                             <div className="col-lg-6 pt-4 pt-lg-0">
                                 <p>
-                                    Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                                    velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                                    culpa qui officia deserunt mollit anim id est laborum.
-                                </p>
-                                <a href="/" className="btn-learn-more">Learn More</a>
-                            </div>
-                        </div>
+                                    Apart from mentoring it also has
+                                    some added features, like mentees
+                                    can browse thousands of books,
+                                    interact with peers, get group
+                                    sessions and well as one to one
+                                    sessions and all these for FREE
 
+                                </p><br/>
+                                <ul>
+                                
+                                    <li>DATABASE: MongoDB ATLAS,
+                                        Firebase</li>
+                                    <li>API USED: Google Books API</li>
+                                </ul>
+                                
+                            </div>
+                            
+                        </div>
+                        <div className="text-center">
+                        <a href="/login" className="btn btn-primary btn-lg" style={{backgroundColor:"#47b2e4"}}>Learn More</a> 
+                        </div>   
                     </div>
                 </section>
 
@@ -78,12 +92,12 @@ export const HomePage = () => {
 
                         <div className="section-title">
                             <h2>Features</h2>
-                            <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
                         </div>
 
                         <div className="row">
                             <div className="col-xl-3 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
-                                <div className="icon-box">
+                                <div className="icon-box text-center">
+                                    <div className="pic text-center"><img src="/img/search.jpg" style={{ borderRadius: "50%" }} width="200px" className="img-fluid" alt="" /></div>
                                     <div className="icon"><i className="bx bxl-dribbble"></i></div>
                                     <h4><a href="/">Search-Filter</a></h4>
                                     <p>Mentees can add filters/tags on their own needs
@@ -95,7 +109,8 @@ export const HomePage = () => {
                             </div>
 
                             <div className="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
-                                <div className="icon-box">
+                                <div className="icon-box text-center">
+                                    <div className="pic text-center"><img src="/img/session.jpg" style={{ borderRadius: "50%" }} width="200px" className="img-fluid" alt="" /></div>
                                     <div className="icon"><i className="bx bx-file"></i></div>
                                     <h4><a href="/">Session</a></h4>
                                     <p>Mentors can create sessions which can be accessed
@@ -107,7 +122,8 @@ export const HomePage = () => {
                             </div>
 
                             <div className="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0" data-aos="zoom-in" data-aos-delay="300">
-                                <div className="icon-box">
+                                <div className="icon-box text-center">
+                                    <div className="pic text-center"><img src="/img/chat.jpg" style={{ borderRadius: "50%" }} width="200px" className="img-fluid" alt="" /></div>
                                     <div className="icon"><i className="bx bx-tachometer"></i></div>
                                     <h4><a href="/">Communication tools</a></h4>
                                     <p>A chat feature on the website, where mentors and
@@ -119,7 +135,8 @@ export const HomePage = () => {
                             </div>
 
                             <div className="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0" data-aos="zoom-in" data-aos-delay="400">
-                                <div className="icon-box">
+                                <div className="icon-box text-center">
+                                    <div className="pic text-center"><img src="/img/discussion.jpg" style={{ borderRadius: "50%" }} width="200px" className="img-fluid" alt="" /></div>
                                     <div className="icon"><i className="bx bx-layer"></i></div>
                                     <h4><a href="/">Discussion forum</a></h4>
                                     <p>A public conversation(chat room) that is accessible to all
@@ -131,7 +148,8 @@ export const HomePage = () => {
                             </div>
 
                             <div className="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-xl-4" data-aos="zoom-in" data-aos-delay="400">
-                                <div className="icon-box">
+                                <div className="icon-box text-center">
+                                    <div className="pic text-center"><img src="/img/reviews.jpg" style={{ borderRadius: "50%" }} width="200px" className="img-fluid" alt="" /></div>
                                     <div className="icon"><i className="bx bx-layer"></i></div>
                                     <h4><a href="/">Reviews</a></h4>
                                     <p>Mentees can review the mentors with
@@ -143,7 +161,8 @@ export const HomePage = () => {
                                 </div>
                             </div>
                             <div className="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-xl-4" data-aos="zoom-in" data-aos-delay="400">
-                                <div className="icon-box">
+                                <div className="icon-box text-center">
+                                    <div className="pic text-center"><img src="/img/notes.jpg" style={{ borderRadius: "50%" }} width="200px" className="img-fluid" alt="" /></div>
                                     <div className="icon"><i className="bx bx-layer"></i></div>
                                     <h4><a href="/">Notes</a></h4>
                                     <p>Mentees can write any important notes and
@@ -156,7 +175,8 @@ export const HomePage = () => {
                                 </div>
                             </div>
                             <div className="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-xl-4" data-aos="zoom-in" data-aos-delay="400">
-                                <div className="icon-box">
+                                <div className="icon-box text-center">
+                                    <div className="pic text-center"><img src="/img/books.jpg" style={{ borderRadius: "50%" }} width="200px" className="img-fluid" alt="" /></div>
                                     <div className="icon"><i className="bx bx-layer"></i></div>
                                     <h4><a href="/">Online books</a></h4>
                                     <p>Search the world'
@@ -171,7 +191,8 @@ export const HomePage = () => {
                                 </div>
                             </div>
                             <div className="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-xl-4" data-aos="zoom-in" data-aos-delay="400">
-                                <div className="icon-box">
+                                <div className="icon-box text-center">
+                                    <div className="pic text-center"><img src="/img/one-one.jpg" style={{ borderRadius: "50%" }} width="200px" className="img-fluid" alt="" /></div>
                                     <div className="icon"><i className="bx bx-layer"></i></div>
                                     <h4><a href="/">One to one booking</a></h4>
                                     <p>If a mentee wants to request one-on-one mentoring from a mentor, they
@@ -189,11 +210,12 @@ export const HomePage = () => {
 
                         <div className="row">
                             <div className="col-lg-9 text-center text-lg-start">
-                                <h3>Call To Action</h3>
-                                <p> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                <h3>Effective Mentoring</h3>
+                                <p className="mt-2">A mentor is a person or friend who guides a less experienced person by building trust and modeling positive behaviors. An effective mentor understands that his or her role is to be dependable, engaged, authentic, and tuned into the needs of the mentee.</p>
+                                
                             </div>
                             <div className="col-lg-3 cta-btn-container text-center">
-                                <a className="cta-btn align-middle" href="/">Call To Action</a>
+                                <a className="cta-btn align-middle" target="_blank" rel="noreferrer" href="https://github.com/alpana02/Project-Maestro">GitHub Repo</a>
                             </div>
                         </div>
 
@@ -216,32 +238,22 @@ export const HomePage = () => {
                                     <div className="pic"><img src="/img/team/team-1.jpeg" className="img-fluid" alt="" /></div>
                                     <div className="member-info">
                                         <h4>Parwin Akhtari </h4>
+
+                                        <p>An Aspiring developer and tech enthusiast. Interested in Problem Solving. </p>
                                         
-                                        <p>Explicabo voluptatem mollitia et repellat qui dolorum quasi</p>
-                                        <div className="social">
-                                            <a href="/"><i className="ri-twitter-fill"></i></a>
-                                            <a href="/"><i className="ri-facebook-fill"></i></a>
-                                            <a href="/"><i className="ri-instagram-fill"></i></a>
-                                            <a href="/"> <i className="ri-linkedin-box-fill"></i> </a>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            
+
 
                             <div className="col-lg-4 mt-4 mt-lg-0">
                                 <div className="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="200">
                                     <div className="pic"><img src="/img/team/team-2.PNG" className="img-fluid" alt="" /></div>
                                     <div className="member-info">
                                         <h4>Siddharth Sharma</h4>
+
+                                        <p>I'm a passionate Learner and tech enthusiast, currently learning Tensorflow2</p>
                                         
-                                        <p>Aut maiores voluptates amet et quis praesentium qui senda para</p>
-                                        <div className="social">
-                                            <a href="/"><i className="ri-twitter-fill"></i></a>
-                                            <a href="/"><i className="ri-facebook-fill"></i></a>
-                                            <a href="/"><i className="ri-instagram-fill"></i></a>
-                                            <a href="/"> <i className="ri-linkedin-box-fill"></i> </a>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -251,14 +263,9 @@ export const HomePage = () => {
                                     <div className="pic"><img src="/img/team/team-3.jpeg" className="img-fluid" alt="" /></div>
                                     <div className="member-info">
                                         <h4>Alpana Nanda</h4>
-                                    
-                                        <p>Explicabo voluptatem mollitia et repellat qui dolorum quasi</p>
-                                        <div className="social">
-                                            <a href="/"><i className="ri-twitter-fill"></i></a>
-                                            <a href="/"><i className="ri-facebook-fill"></i></a>
-                                            <a href="/"><i className="ri-instagram-fill"></i></a>
-                                            <a href="/"> <i className="ri-linkedin-box-fill"></i> </a>
-                                        </div>
+
+                                        <p>I seek new challenges and try to think out-of-the-box while solving a problem.</p>
+                                        
                                     </div>
                                 </div>
                             </div>

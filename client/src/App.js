@@ -42,25 +42,40 @@ function App() {
           <Alert alert={alert} />
           <div>
             <Routes>
-            <Route exact path="/" element={<Home showAlert={showAlert} />} />
-            <Route exact path="/about" element={<About />} />
-            <Route exact path="/aboutmentee" element={<AboutMentee />} />
-            <Route exact path="/chat" element={<DirectMessaging />} />
-            <Route exact path="/discussion" element={<Discussion />} />
-            <Route exact path="/student_notes" element={<StudentNotes showAlert={showAlert} />} />
-            <Route exact path="/session" element={<Session showAlert={showAlert} />} />
-            <Route exact path="/login" element={<Login showAlert={showAlert} />} />
-            <Route exact path="/signuphome" element={<SignupHome showAlert={showAlert} />} />
-            <Route exact path="/signup" element={<Signup showAlert={showAlert} />} />
-            <Route exact path="/signupmentee" element={<SignupMentee showAlert={showAlert} />} />
-            <Route exact path="/viewProfile/:id" element={<ViewProfile showAlert={showAlert} />} />
-            <Route exact path="/notify" element={<NotificationMentor showAlert={showAlert} />} />
-            <Route exact path="/books" element={<Books showAlert={showAlert} />} />
-            <Route exact path="/homepage" element={<HomePage />} />
-            <Route path="*" element={<Notfound />} />
+              <Route exact path="/" element={<Home showAlert={showAlert} />} />
+              <Route exact path="/about" element={<About />} />
+              <Route exact path="/aboutmentee" element={<AboutMentee />} />
+              <Route exact path="/chat" element={<DirectMessaging />} />
+              <Route exact path="/discussion" element={<Discussion />} />
+              <Route exact path="/student_notes" element={<StudentNotes showAlert={showAlert} />} />
+              <Route exact path="/session" element={<Session showAlert={showAlert} />} />
+              <Route exact path="/login" element={<Login showAlert={showAlert} />} />
+              <Route exact path="/signuphome" element={<SignupHome showAlert={showAlert} />} />
+              <Route exact path="/signup" element={<Signup showAlert={showAlert} />} />
+              <Route exact path="/signupmentee" element={<SignupMentee showAlert={showAlert} />} />
+              <Route exact path="/viewProfile/:id" element={<ViewProfile showAlert={showAlert} />} />
+              <Route exact path="/notify" element={<NotificationMentor showAlert={showAlert} />} />
+              <Route exact path="/books" element={<Books showAlert={showAlert} />} />
+              <Route exact path="/homepage" element={<HomePage />} />
+              <Route path="*" element={<Notfound />} />
             </Routes>
           </div>
         </Router>
+        <footer class="footer py-4 bg-dark" style={{color:"#f3f5fa"}}>
+          <div class="container-fluid">
+            <div class="row align-items-center justify-content-center">
+              <div class="col-12 mb-lg-0 mb-4">
+                <div class="text-center text-sm">
+                Made with ❤️ by
+                  <b> Team Nutella</b>
+                </div>
+                <div class="copyright text-center text-sm text-muted mt-1">
+                Copyright ©️ 2022 All rights reserved
+                </div>
+              </div>
+            </div>
+          </div>
+        </footer>
       </NoteState>
     </>
   );
