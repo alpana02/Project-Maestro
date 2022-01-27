@@ -89,7 +89,7 @@ export const Signup = (props) => {
     }
   };
   return (
-    <div>
+    <div className="container">
       <section className="h-100 gradient-form">
         <div className="h-100">
           <div className="row d-flex justify-content-center align-items-center h-100">
@@ -245,7 +245,7 @@ export const Signup = (props) => {
                             aria-label="Default select example"
                             required
                           >
-                            <option selected>Select Subject</option>
+                            <option defaultValue>Select Subject</option>
                             <option value="math">Math</option>
                             <option value="science">Science</option>
                             <option value="english">English</option>

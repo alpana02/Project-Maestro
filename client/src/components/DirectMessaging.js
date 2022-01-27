@@ -21,14 +21,15 @@ export default function DirectMessaging (props) {
 
     useEffect( () => {
         if (!localStorage.getItem("token")) {
-            navigate("/login");
+            navigate("/homepage");
         }
         getUser()
         // eslint-disable-next-line
     }, []);
 
     return (
-        <ChatEngine
+        <div className="container mt-4">
+            <ChatEngine 
             height='85vh'
             userName={user}
             // Accessing the stored environment variables in .env file
@@ -36,5 +37,7 @@ export default function DirectMessaging (props) {
             projectID={'4c9a4123-7701-4745-ab48-5f6ebd77f695'}
         // displayNewChatInterface={(credentials) => displayChatInterface(credentials)}
         />
+        </div>
+        
     )
 }

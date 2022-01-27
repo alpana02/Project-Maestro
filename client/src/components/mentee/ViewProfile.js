@@ -31,7 +31,7 @@ export default function ViewProfile(props) {
 
   useEffect(() => {
     if (!localStorage.getItem("token")) {
-      navigate("/login");
+      navigate("/homepage");
     }
     if (localStorage.getItem("role")==="mentor") {
       navigate("*");
@@ -128,7 +128,7 @@ try{
   }
 
   return (
-    <div>
+    <div className="container">
       <div className="container rounded bg-white">
         <div className="row">
           <div className="w3-content w3-margin-top" style={{ maxWidth: "1400px" }}>

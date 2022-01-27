@@ -14,7 +14,7 @@ export default function Home(props) {
 
   useEffect(() => {
     if (!localStorage.getItem("token")) {
-      navigate("/login");
+      navigate("/homepage");
     }
     if (localStorage.getItem("role")==="mentor") {
       navigate("/about");
@@ -75,7 +75,7 @@ export default function Home(props) {
   };
 
   return (
-    <div>
+    <div className="container">
     <div className="col-12 mt-3">
       <h2>Top Free Sessions By mentors</h2>
             <div className="row my-3 py-3"  >

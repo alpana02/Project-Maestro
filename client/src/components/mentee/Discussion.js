@@ -25,7 +25,7 @@ export default function Discussion() {
 
   useEffect(() => {
     if (!localStorage.getItem("token")) {
-      navigate("/login");
+      navigate("/homepage");
     }
     if (localStorage.getItem("role") === "mentor") {
       navigate("*");
@@ -42,7 +42,7 @@ export default function Discussion() {
   }, []);
 
   return (
-    <div className="card px-5" style={{ backgroundColor: "#EDEDED" }}>
+    <div className="container card px-5 mt-4" style={{ backgroundColor: "#EDEDED" }}>
       <h1 style={{ textAlign: "center" }}>Discussion Forum</h1>
       <div className="msgs mx-4 mb-5 pb-4">
         {messages.map(({ name, text, email }) => {

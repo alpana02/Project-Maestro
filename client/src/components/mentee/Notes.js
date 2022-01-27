@@ -26,7 +26,7 @@ export default function Notes(props) {
   };
   useEffect(() => {
     if (!localStorage.getItem("token")) {
-      navigate("/login");
+      navigate("/homepage");
     }
     if (localStorage.getItem("role")==="mentor") {
       navigate("*");
@@ -41,7 +41,7 @@ export default function Notes(props) {
   const ref = useRef(null);
   const refClose = useRef(null);
   return (
-    <>
+    <div className="container">
       <AddNote showAlert={props.showAlert} />
       <button
         type="button"
@@ -151,6 +151,6 @@ export default function Notes(props) {
           );
         })}
       </div>
-    </>
+    </div>
   );
 }

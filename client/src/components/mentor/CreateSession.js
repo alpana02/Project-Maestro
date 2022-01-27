@@ -39,7 +39,7 @@ export default function CreateSession(props) {
   };
   useEffect(() => {
     if (!localStorage.getItem("token")) {
-      navigate("/login");
+      navigate("/homepage");
     }
     if (localStorage.getItem("role")==="mentee") {
       navigate("*");

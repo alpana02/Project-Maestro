@@ -328,9 +328,6 @@ body {
     height: 80vh;
     background: #37517e;
   }
-  #hero .container {
-    padding-top: 72px;
-  }
   #hero h1 {
     margin: 0 0 10px 0;
     font-size: 48px;
