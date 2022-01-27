@@ -21,7 +21,7 @@ export const HomePage = () => {
                             <div className="d-flex justify-content-center justify-content-lg-start">
                                 <a href="/login" className="btn-get-started scrollto">Login</a>
                                 <a href="/signuphome" className="btn-get-started scrollto mx-3">Sign-Up</a>
-                                <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" className="glightbox btn-watch-video"><i className="bi bi-play-circle"></i><span>Watch Video</span></a>
+                                <a href="https://www.youtube.com/watch?v=LfEDjgqoHL8&t=1s" target="_blank" rel="noreferrer" className="glightbox btn-watch-video"><i className="bi bi-play-circle"></i><span>Watch Video</span></a>
                             </div>
                         </div>
 
@@ -115,8 +115,8 @@ export const HomePage = () => {
                                     <h4><a href="/">Session</a></h4>
                                     <p>Mentors can create sessions which can be accessed
                                         by the mentees. They can cover important topics in
-                                        the group session. one the mentee enrolls in any
-                                        session, it s displayed in their profile and they are
+                                        the group session. Once the mentee enrolls in any
+                                        session, it is displayed in their profile and they are
                                         also provided with joining link.</p>
                                 </div>
                             </div>
@@ -140,8 +140,7 @@ export const HomePage = () => {
                                     <div className="icon"><i className="bx bx-layer"></i></div>
                                     <h4><a href="/">Discussion forum</a></h4>
                                     <p>A public conversation(chat room) that is accessible to all
-                                        mentees in the discussion room. Mentees can enter this room
-                                        with their name or anonymously. This will provide them to be
+                                        mentees in the discussion room. This will provide them to be
                                         able to openly discuss and communicate their concerns with
                                         everyone.</p>
                                 </div>
@@ -252,7 +251,7 @@ export const HomePage = () => {
                                     <div className="member-info">
                                         <h4>Siddharth Sharma</h4>
 
-                                        <p>I'm a passionate Learner and tech enthusiast, currently learning Tensorflow2</p>
+                                        <p>I'm a passionate Learner and tech enthusiast, currently learning Machine Learning</p>
                                         
                                     </div>
                                 </div>

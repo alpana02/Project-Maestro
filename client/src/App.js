@@ -61,16 +61,13 @@ function App() {
             </Routes>
           </div>
         </Router>
-        <footer class="footer py-4 bg-dark" style={{color:"#f3f5fa"}}>
-          <div class="container-fluid">
-            <div class="row align-items-center justify-content-center">
-              <div class="col-12 mb-lg-0 mb-4">
-                <div class="text-center text-sm">
+        <footer className="footer py-2 text-muted ">
+          <div className="container-fluid">
+            <div className="row align-items-center justify-content-center">
+              <div className="col-12 mb-lg-0 mb-4">
+                <div className="text-center text-sm">
                 Made with ❤️ by
                   <b> Team Nutella</b>
-                </div>
-                <div class="copyright text-center text-sm text-muted mt-1">
-                Copyright ©️ 2022 All rights reserved
                 </div>
               </div>
             </div>
