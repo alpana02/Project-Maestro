@@ -46,7 +46,7 @@ Contents
 <br/>
 <li>Node
 <br/>
-<li>Medicine api
+<li>Google Books API
 <br/>
 <li>Firebase
 </ol>
